@@ -1,6 +1,8 @@
-function [ output_args ] = seg_binairy( input_args )
-%SEG_BINAIRY Summary of this function goes here
-%   Detailed explanation goes here
+function [ B ] = seg_binairy( A )
+
+%fix this, something with gausian :D
+
+B = im2bw(A, 0.4);
 
 
 end

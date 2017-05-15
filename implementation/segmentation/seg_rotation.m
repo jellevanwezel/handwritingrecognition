@@ -1,14 +1,16 @@
 function [ B , optimalAngle] = seg_rotation(A)
 
-A = im2bw(A, 0.4);
+% Resizes the image in the vertical direction by 1/3
+% Then rotates it between 3 and -3 degrees
+% Finds the 'best' rotation
+
 A = imcomplement(A);
 maxDensity = -inf;
 optimalAngle = 0;
-C = imresize(A,[floor(size(A,1)/3), size(A,2)]);
 
-for angle= -3:0.1:3
-    rotImage = imrotate(C,angle);
-    densities = sum(rotImage,1);
+for angle = -2:0.1:2
+    rotImage = imrotate(A,angle);
+    rotImage = imresize(rotImage,[floor(size(rotImage,1)/3), size(rotImage,2)]);
     if(max(sum(rotImage,2)) > maxDensity)
         maxDensity = max(sum(rotImage,2));
         optimalAngle = angle;
