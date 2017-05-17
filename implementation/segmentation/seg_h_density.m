@@ -65,8 +65,7 @@ if debug
     
     subimage(imcomplement(A));
     title('Original image');
-    
-    CC = bwconncomp(closed);
+   
     
     
 
