@@ -3,8 +3,7 @@ dataDir = '../../dataset/Train/';
 outputDir = strcat(dataDir,'../Train_rotated/');
 mkdir(outputDir);
 dirContents = dir(dataDir);
-%for i = 1:size(dirContents,1)
-for i = 3:20
+for i = 3:size(dirContents,1)
     fileName = dirContents(i).name;
     
     if ~all(fileName(end-3:end) == '.pgm')
