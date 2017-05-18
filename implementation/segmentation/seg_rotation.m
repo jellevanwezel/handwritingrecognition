@@ -1,7 +1,7 @@
 function [ B , optimalAngle] = seg_rotation(A)
 
 % Resizes the image in the vertical direction by 1/3
-% Then rotates it between 3 and -3 degrees
+% Then rotates it between 2 and -2 degrees
 % Finds the 'best' rotation
 
 A = imcomplement(A);
