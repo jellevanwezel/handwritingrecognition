@@ -1,7 +1,9 @@
-function [ framedComps ] = seg_merge_groups( components, imageDims)
+function [ framedComps ] = seg_merge_groups( components, A)
 
 overlap_threshold = 0.15;
 %the percentage of overlap between components for them to be merged
+
+imageDims = size(A);
 
 for i = 1:length(components)
     if isempty(components{i})
@@ -35,22 +37,7 @@ for i = 1:length(components)
     
 end
 components = components(~cellfun(@isempty, components));
-framedComps = cell(1,length(components));
-%allImages = [ones(imageDims(1),3),zeros(imageDims(1),3)];
-for i = 1:length(components)
-    canvas = zeros(imageDims);
-    canvas(components{i}) = 1;
-    while(sum(canvas(:,1)) == 0)
-        canvas(:,1) = [];
-    end
-    while(sum(canvas(:,end)) == 0)
-        canvas(:,end) = [];
-    end
-    %allImages = [allImages,canvas,zeros(imageDims(1),3),ones(imageDims(1),3)];
-    framedComps{i} = canvas;
-end
-
-%imshow(abs(allImages - 1));
+framedComps = seg_canvas_comps( components , A);
 
 end
 

@@ -3,7 +3,7 @@ function [ merged ] = seg_concomp( A )
     
     closed = imclose(imcomplement(A),se);
     CC = bwconncomp(closed);
-    merged = seg_merge_groups(CC.PixelIdxList, size(A)); 
+    merged = seg_merge_groups(CC.PixelIdxList, A); 
     
 end
 
