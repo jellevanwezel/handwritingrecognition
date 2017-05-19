@@ -25,14 +25,8 @@ cd('..');
 cd('..');
 cd('implementation');
 figure;
-size(imageFont1)
-imageFont1=rgb2gray(imageFont1);
-imageFont2=rgb2gray(imageFont2);
-
 imageFont1 = imbinarize(imageFont1)
 imageFont2 = imbinarize(imageFont2)
-
-
 
 imageFont1 = bwmorph(imageFont1,'skel',inf)
 imageFont2 = bwmorph(imageFont2,'skel',inf)
