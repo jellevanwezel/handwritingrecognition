@@ -1,0 +1,14 @@
+function [ ] = seg_show_chars( original, comps, cols )
+
+rows = ceil(length(comps)/cols);
+
+figure;
+for i = 1:length(comps)
+    subplot(rows,cols,i);
+    subimage(abs(comps{i} -1));
+    title(num2str(i));
+    axis('off');
+end
+
+end
+

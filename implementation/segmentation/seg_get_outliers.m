@@ -14,7 +14,7 @@ big = [];
 small = [];
 
 for i = 1:length(characters) 
-    if lengths(i) <= meanLength - 2 * stdLength
+    if lengths(i) <= meanLength - stdLength
         small = [small,i];
         continue;
     end
