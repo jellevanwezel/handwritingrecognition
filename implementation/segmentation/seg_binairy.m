@@ -1,7 +1,7 @@
 function [ B ] = seg_binairy( A )
 
 A = imgaussfilt(A,1);
-[level, EM] = graythresh(I)
+[level, ~] = graythresh(A);
 B = im2bw(A, level);
 
 end
