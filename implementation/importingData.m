@@ -27,9 +27,9 @@ for i=1:3 %%% aanpassen in nSentences voor alle data
         w = str2double(regexp(tline, '(?<=w=)[0-9]+', 'match'));
         h = str2double(regexp(tline, '(?<=h=)[0-9]+', 'match'));
             
-        labels{j} = regexp(tline, '(?<=<txt>)@\w*'  , 'match'); 
-        fonts{j} = regexp(tline, '(?<=<utf> )[0-9]+\w*'  , 'match');
-        labeledSigns{j} = imcrop(currentImage, [x, y, w, h]);
+        labels(j) = regexp(tline, '(?<=<txt>)@\w*'  , 'match'); 
+        fonts(j) = regexp(tline, '(?<=<utf> )[0-9]+\w*'  , 'match');
+        labeledSigns{j} = imbinarize(imcrop(currentImage, [x, y, w, h])); %%% Binarization done for test
          
         imshow(labeledSigns{j}); 
         tline = fgetl(currentLabel);
@@ -38,16 +38,14 @@ for i=1:3 %%% aanpassen in nSentences voor alle data
 
     fclose(currentLabel);
    
-   %%T = adaptthresh(currentImage, 0.4);
-   %%BW = imbinarize(currentImage, T);
-   %%imshowpair(currentimage,BW,'montage')
-   chineseSentences{i} = currentImage;
+   chineseSentences{i} = imbinarize(currentImage); %%% Binarization done for test
 end
-
-
-
-
 
 cd('..');
 cd('..');
 cd('implementation');
+
+
+save('sentences.mat', 'chineseSentences'); 
+save('labeledSigns.mat', 'labeledSigns');
+
