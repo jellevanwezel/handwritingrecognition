@@ -1,6 +1,6 @@
 function [ framedComps ] = seg_merge_groups( components, A)
 
-overlap_threshold = 0.15;
+overlap_threshold = 0.6;
 %the percentage of overlap between components for them to be merged
 
 imageDims = size(A);
@@ -28,7 +28,7 @@ for i = 1:length(components)
             continue;
         end
         overlap = abs((abs(minCol - minCol2) + abs(maxCol - maxCol2)) - width1);
-        if 1 - (overlap / width2) >= overlap_threshold
+        if (overlap / width2) >= overlap_threshold
             components{i} = [components{i};components{j}];
             components{j} = [];
         end

@@ -1,8 +1,8 @@
-function [ ] = seg_show_chars( original, comps, cols )
+function [ ] = seg_show_chars( original, comps, cols ,meanLength, stdLength)
 
 rows = ceil(length(comps)/cols) + 1;
 
-[big,small] = seg_get_outliers(comps);
+[big,small] = seg_get_outliers(comps,meanLength, stdLength);
 
 figure;
 subplot(rows,cols,1:cols);

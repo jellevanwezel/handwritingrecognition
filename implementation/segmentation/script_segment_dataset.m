@@ -2,6 +2,8 @@
 % Also make sure you have /implementation/segmentation as your working
 % directory
 
+meanWidth = 73.5944; % Mean width calculated from the labeled data
+stdWidth = 8.4463; % std in width calculated from the labeled data
 
 clear;
 dataDir = '../../dataset/Train/';
