@@ -1,4 +1,4 @@
-function [ framedComps, components ] = seg_merge_groups( components, A)
+function [components ] = seg_merge_groups( components, A)
 
 overlap_threshold = 0.4;
 %the percentage of overlap between components for them to be merged
@@ -44,6 +44,5 @@ for i = 1:length(components)
     
 end
 components = components(~cellfun(@isempty, components));
-framedComps = seg_canvas_comps( components , A);
 end
 

@@ -17,8 +17,24 @@ vCroppedA = seg_v_density(rotatedA,0);
 
 trimmedA = seg_trim_image(vCroppedA);
 
-merged = seg_concomp(trimmedA);
+characters = seg_concomp(trimmedA);
 
-[big,small] = seg_get_outliers(merged, meanWidth, stdWidth)
+framed = seg_canvas_comps( characters , trimmedA);
 
-seg_show_chars(A,merged,6,meanWidth, stdWidth); %6 is the amount of columns
+[big,small] = seg_get_outliers(framed, meanWidth, stdWidth);
+
+small = seg_small_whitespace(small ,characters, trimmedA, meanWidth);
+
+noice = seg_find_noice_comps( small, framed );
+
+%characters = seg_remove_noice_comps(noice,characters);  %when removing the noice the indexes of small change.. pls fix
+
+small = setdiff(small,noice)
+
+characters = seg_merge_closest_neigbour( characters, small, trimmedA);
+
+%when 2 smalls get merged they get deleted... pls fix
+
+framed = seg_canvas_comps( characters , trimmedA);
+
+seg_show_chars(A,framed,6,meanWidth, stdWidth); %6 is the amount of columns
