@@ -1,8 +1,6 @@
-function [ ] = seg_show_chars( original, comps, cols ,meanLength, stdLength)
+function [ ] = seg_show_chars( original, comps, cols ,nsb)
 
 rows = ceil(length(comps)/cols) + 1;
-
-[big,small] = seg_get_outliers(comps,meanLength, stdLength);
 
 figure;
 subplot(rows,cols,1:cols);
@@ -12,10 +10,10 @@ for i = 1:length(comps)
     subplot(rows,cols,i + cols);
     subimage(abs(comps{i} -1));
     titleString = num2str(i);
-    if ismember(i,big)
+    if nsb(i,3)
         titleString = strcat(titleString,' (B)');
     end
-    if ismember(i,small)
+    if nsb(i,2)
         titleString = strcat(titleString,' (S)');
     end
     title(titleString);
