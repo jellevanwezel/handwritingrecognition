@@ -11,11 +11,11 @@ big = zeros(length(characters),1);
 small = zeros(length(characters),1);
 
 for i = 1:length(characters) 
-    if lengths(i) <= meanLength - 2.5 * stdLength %magic number pls fix
+    if lengths(i) <= meanLength - 3 * stdLength %magic number pls fix
         small(i) = 1;
         continue;
     end
-    if lengths(i) >= meanLength + 2.5 * stdLength
+    if lengths(i) >= meanLength + 3 * stdLength
         big(i) = 1;
     end
 end

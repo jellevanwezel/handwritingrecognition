@@ -1,4 +1,4 @@
-function [ small ] = seg_small_whitespace( small ,comps, I, m)
+function [ small ] = seg_small_whitespace( small ,comps, I, m,std)
 %SEG_SMALL_WHITESPACE Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -28,7 +28,7 @@ for i = 1:length(small)
     whiteSpaceRight = nextMinCol - maxCol;
     estematedCompSize = min([whiteSpaceLeft,whiteSpaceRight]) * 2 + (maxCol - minCol);
        
-    if estematedCompSize >= m
+    if estematedCompSize >= m - 3 * std
            small(i) = 0;
     end
 end

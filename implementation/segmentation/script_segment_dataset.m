@@ -2,14 +2,15 @@
 % Also make sure you have /implementation/segmentation as your working
 % directory
 
-meanWidth = 73.5944; % Mean width calculated from the labeled data
-stdWidth = 8.4463; % std in width calculated from the labeled data
-
 clear;
 dataDir = '../../dataset/Train/';
 outputDir = strcat(dataDir,'../Train_segmented/');
 mkdir(outputDir);
 dirContents = dir(dataDir);
+
+meanWidth = 73.5944; % Mean width calculated from the labeled data
+stdWidth = 8.4463; % std in width calculated from the labeled data
+
 for i = 3:10%size(dirContents,1)
     fileName = dirContents(i).name;
     
@@ -39,11 +40,11 @@ for i = 3:10%size(dirContents,1)
     %frames the components on a canvas
     framed = seg_canvas_comps( characters , trimmedA);
 
-    %finds the outliers: 2.5 std +/- the mean from the labeled data
+    %finds the outliers: 3 std +/- the mean from the labeled data
     [big,small] = seg_find_outliers(framed, meanWidth, stdWidth);
 
     %checks if this 'small' char is a standalone char
-    small = seg_small_whitespace(small ,characters, trimmedA, meanWidth);
+    small = seg_small_whitespace(small ,characters, trimmedA, meanWidth, stdWidth);
 
     %find noise components
     noise = seg_find_noise_comps( small, framed );

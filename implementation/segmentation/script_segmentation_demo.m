@@ -29,7 +29,7 @@ framed = seg_canvas_comps( characters , trimmedA);
 [big,small] = seg_find_outliers(framed, meanWidth, stdWidth);
 
 %checks if this 'small' char is a standalone char
-small = seg_small_whitespace(small ,characters, trimmedA, meanWidth);
+small = seg_small_whitespace(small ,characters, trimmedA, meanWidth, stdWidth);
 
 %find noise components
 noise = seg_find_noise_comps( small, framed );

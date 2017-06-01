@@ -41,34 +41,54 @@ while i < length(comps);
     end
     
     %check if this component is inbetween 2 big components
-    if nsb(i-1,3) && nsb(i+1,3)
+    if (i~= 1 && i ~= length(comps)) && (nsb(i-1,3) && nsb(i+1,3))
         continue;
     end
     
     mergeDirection = 0;
     
-    if abs(wse(i - 1, 2) - wse(i,3)) < abs(wse(i + 1, 3) - wse(i,2))
-        %merge left
-        mergeDirection = -1;      
+    if i == 1 || i == length(comps)
+        if i == 1
+            mergeDirection = 1;
+        else
+            mergeDirection = -1;
+        end
     else
-        %merge right
-        mergeDirection = 1;
+        newWidthLeft = abs(wse(i - 1, 2) - wse(i,3));
+        newWidthRight = abs(wse(i + 1, 3) - wse(i,2));
+        
+        if  newWidthLeft < newWidthRight
+            %merge left
+            mergeDirection = -1;     
+        else
+            %merge right
+            mergeDirection = 1;
+        end
+        
     end
     
-    comps{i + mergeDirection} = [comps{i + mergeDirection};smallComp];
     
-    [~,minCol] = ind2sub(imageDims,min(comps{i + mergeDirection}));
-    [~,maxCol] = ind2sub(imageDims,max(comps{i + mergeDirection}));
+    newComp = [comps{i + mergeDirection};smallComp];
+    
+    [~,minCol] = ind2sub(imageDims,min(newComp));
+    [~,maxCol] = ind2sub(imageDims,max(newComp));
     compSize = abs(minCol - maxCol);
+    
+    if compSize >= 2 * meanWidth
+        %new comp looks too big, leave this small comp alone
+        continue;
+    end
+    
+    comps{i + mergeDirection} = newComp;
     wse(i + mergeDirection,:) = [compSize,minCol,maxCol];
     
     newCompIsSmall = 0;
     
-    if wse(i + mergeDirection,1) <= meanWidth - 2.5 * stdWidth
+    if wse(i + mergeDirection,1) <= meanWidth - 3 * stdWidth
         nsb(i + mergeDirection,:) = [0,1,0];
         newCompIsSmall = 1;
     end
-    if wse(i + mergeDirection,1) > meanWidth + 2.5 * stdWidth
+    if wse(i + mergeDirection,1) > meanWidth + 3 * stdWidth
         nsb(i + mergeDirection,:) = [0,0,1];
     end
     
