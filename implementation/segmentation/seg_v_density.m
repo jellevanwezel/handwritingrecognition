@@ -22,6 +22,15 @@ end
 
 endLocation   =  locSizes(maxRow,1) + locSizes(maxRow,2) + (locSizes(maxRow,2) * addedWindowSize);
 startLocation =  locSizes(maxRow,1) - (locSizes(maxRow,2) * addedWindowSize);
+
+if startLocation < 1
+    startLocation = 1;
+end
+
+if endLocation > size(A,1)
+    endLocation = size(A,1);
+end
+
 %[xmin ymin width height]
 % maybe instead of taking a percentage take the closest minimum of the
 % densities curve
@@ -29,7 +38,7 @@ startLocation =  locSizes(maxRow,1) - (locSizes(maxRow,2) * addedWindowSize);
 
 %imcrop tried to open a window or smthing, so I made my own cropper:
 
-cropped= A(round(startLocation):round(startLocation+abs(endLocation - startLocation)),1:end);
+cropped= A(round(startLocation):round(endLocation),1:end);
 cropped = imcomplement(cropped);
 
 end
