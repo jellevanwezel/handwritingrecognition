@@ -15,7 +15,7 @@ dirContents = dir(dataDir);
 meanWidth = 73.5944; % Mean width calculated from the labeled data
 stdWidth = 8.4463; % std in width calculated from the labeled data
 
-for i = 55:size(dirContents,1)%3:size(dirContents,1)
+for i = 3:size(dirContents,1)
     fileName = dirContents(i).name;
     
     if ~all(fileName(end-3:end) == '.pgm')
@@ -71,4 +71,5 @@ for i = 55:size(dirContents,1)%3:size(dirContents,1)
         I = abs(framed{j}-1);
         imwrite(I,strcat(imageDir,num2str(j),'.png'));
     end
+    disp(strcat('finished - ', fileName(1:end-4)));
 end
