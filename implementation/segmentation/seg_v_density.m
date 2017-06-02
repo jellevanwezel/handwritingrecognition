@@ -1,4 +1,4 @@
-function [ cropped ] = seg_v_density( A ,debug)
+function [ cropped ] = seg_v_density( A )
 
 threshold = floor(size(A,2) * 0.1);
 addedWindowSize = 0.25;
@@ -12,36 +12,25 @@ thDensities(thDensities >= threshold) = 1;
 
 locSizes = seg_find_pixel_groups(thDensities');
 
+if isempty(locSizes)
+    cropped = imcomplement(A);
+    return;
+end
+
 [~,maxRow] = max(locSizes(:,2));
 
 
 endLocation   =  locSizes(maxRow,1) + locSizes(maxRow,2) + (locSizes(maxRow,2) * addedWindowSize);
 startLocation =  locSizes(maxRow,1) - (locSizes(maxRow,2) * addedWindowSize);
 %[xmin ymin width height]
-% maybe instead of taking a percentage take the closes minimum of the
+% maybe instead of taking a percentage take the closest minimum of the
 % densities curve
-cropped = imcrop(A,[0 startLocation size(A,2) abs(endLocation - startLocation)]);
+% cropped = imcrop(A,[0 startLocation size(A,2) abs(endLocation - startLocation)]);
+
+%imcrop tried to open a window or smthing, so I made my own cropper:
+
+cropped= A(round(startLocation):round(startLocation+abs(endLocation - startLocation)),1:end);
 cropped = imcomplement(cropped);
-
-if debug
-    figure;
-    subplot(4,1,1);
-    plot(1:size(densities,1),densities);
-    title('Densities');
-
-    subplot(4,1,2);
-    plot(1:size(thDensities,1),thDensities);
-    title('Thresholded densities');
-
-    subplot(4,1,3);
-    subimage(imcomplement(A));
-    title('Full image');
-
-    subplot(4,1,4);
-    subimage(cropped);
-    title('Cropped');
-end
-
 
 end
 

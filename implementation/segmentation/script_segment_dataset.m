@@ -2,6 +2,10 @@
 % Also make sure you have /implementation/segmentation as your working
 % directory
 
+%Things still to do:
+%  - Whitspace small should check for first char
+%  - Check if too big chars are actualy multiple chars at the end. (maybe with the vertical density.)
+
 clear;
 dataDir = '../../dataset/Train/';
 outputDir = strcat(dataDir,'../Train_segmented/');
@@ -11,7 +15,7 @@ dirContents = dir(dataDir);
 meanWidth = 73.5944; % Mean width calculated from the labeled data
 stdWidth = 8.4463; % std in width calculated from the labeled data
 
-for i = 3:10%size(dirContents,1)
+for i = 55:size(dirContents,1)%3:size(dirContents,1)
     fileName = dirContents(i).name;
     
     if ~all(fileName(end-3:end) == '.pgm')
@@ -29,8 +33,8 @@ for i = 3:10%size(dirContents,1)
     [rotatedA,angle] = seg_rotation(binA);
 
     %crops the image verticaly
-    vCroppedA = seg_v_density(rotatedA,0);
-
+    vCroppedA = seg_v_density(rotatedA);
+    
     %trims any whitespace from the sides
     trimmedA = seg_trim_image(vCroppedA);
 
