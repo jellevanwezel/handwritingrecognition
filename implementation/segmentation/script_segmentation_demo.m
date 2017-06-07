@@ -3,8 +3,11 @@
 meanWidth = 73.5944; % Mean width calculated from the labeled data
 stdWidth = 8.4463; % std in width calculated from the labeled data
 
-A = imread('../../dataset/Train/navis-Ming-Qing_18341_0004-line-001-y1=0-y2=289.pgm');
+%A = imread('../../dataset/Train/navis-Ming-Qing_18341_0004-line-001-y1=0-y2=289.pgm');
 %A = imread('../../dataset/Train/navis-Ming-Qing_18637_0022-line-009-y1=1226-y2=1386.pgm');
+
+A = imread('../../dataset/Train/navis-Ming-Qing_18637_0009-line-006-y1=775-y2=941.pgm');
+
 binA = seg_binairy(A);
 
 %[rotatedA,angle] = seg_rotation(binA);
