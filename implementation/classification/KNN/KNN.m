@@ -1,0 +1,21 @@
+function [correctlyClassified, s] = KNN(s)
+
+
+
+model = fitcknn(s.trainFeatures', s.trainLabels, 'NumNeighbors',1,'Standardize',1);
+
+predictedLabels = predict(model, s.testFeatures');
+
+correct = 0;
+for i = 1:length(s.testLabels)
+    if(strcmp(predictedLabels(i), s.testLabels(i)))
+        correct = correct + 1;
+    else
+        predictedLabels(i);
+    end
+end
+
+correctlyClassified = (correct/length(s.testLabels))*100
+
+end
+
