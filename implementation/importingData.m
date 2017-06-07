@@ -53,4 +53,3 @@ save('sentences.mat', 'chineseSentences');
 save('labeledSigns.mat', 'labeledSigns');
 save('labels.mat', 'labels');
 save('fonts.mat', 'fonts');
-
