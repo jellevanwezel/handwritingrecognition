@@ -1,5 +1,8 @@
 function [ splitted ] = seg_split_big(I, meanWidth, stdWidth, avgFilter)
      
+
+    % Todo: find the white spaces in this image, less variations should have
+    % a higher split priority
     
     %Search for pixelgroups
 

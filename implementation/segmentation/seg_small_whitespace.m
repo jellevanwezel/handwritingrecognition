@@ -12,22 +12,26 @@ for i = 1:length(small)
     comp = comps{i};
     [~,minCol] = ind2sub(imageDims,min(comp));
     [~,maxCol] = ind2sub(imageDims,max(comp));
-    prefMaxCol = 1;
+    prefMaxCol = -inf;
+    %if this is the first char, the algorithm will take the right white space as indicator
     
     if i ~= 1
         [~, prefMaxCol] = ind2sub(imageDims,max(comps{i-1}));        
     end
     
-    nextMinCol = imageDims(2);
+    nextMinCol = inf;
+    %If this is the last char, the algorithm will take the left white space as indicator
     
     if i ~= length(comps)
         [~, nextMinCol] = ind2sub(imageDims,min(comps{i+1}));        
     end
     
-    whiteSpaceLeft = minCol - prefMaxCol;
-    whiteSpaceRight = nextMinCol - maxCol;
-    estematedCompSize = min([whiteSpaceLeft,whiteSpaceRight]) * 2 + (maxCol - minCol);
-       
+    whiteSpaceLeft = abs(minCol - prefMaxCol);
+    whiteSpaceRight = abs(nextMinCol - maxCol);
+    estematedCompSize = min([whiteSpaceLeft,whiteSpaceRight]) * 2 + abs(maxCol - minCol);
+    
+    disp(estematedCompSize);
+    
     if estematedCompSize >= m - 3 * std
            small(i) = 0;
     end
