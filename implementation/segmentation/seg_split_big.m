@@ -13,8 +13,10 @@ function [ splitted ] = seg_split_big(I, meanWidth, stdWidth, avgFilter)
         diffColls(i) = sum(colDiff);
     end
     binDiffs = filter(1/avgFilter * ones(1,avgFilter),1, diffColls);
+    
     binDiffs(binDiffs <= 1) = 0;
     binDiffs(binDiffs > 1) = 1;
+    
     startCol = floor(meanWidth - 3 * stdWidth);
     endCol =  size(I,2) - floor(meanWidth - 1 * stdWidth);
     

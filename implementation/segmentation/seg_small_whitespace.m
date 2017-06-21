@@ -30,8 +30,6 @@ for i = 1:length(small)
     whiteSpaceRight = abs(nextMinCol - maxCol);
     estematedCompSize = min([whiteSpaceLeft,whiteSpaceRight]) * 2 + abs(maxCol - minCol);
     
-    disp(estematedCompSize);
-    
     if estematedCompSize >= m - 3 * std
            small(i) = 0;
     end
