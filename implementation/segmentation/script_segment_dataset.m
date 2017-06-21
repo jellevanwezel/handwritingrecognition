@@ -4,14 +4,14 @@
 
 clear;
 dataDir = '../../dataset/Train/';
-outputDir = strcat(dataDir,'../Train_segmented/');
+outputDir = strcat(dataDir,'../Train_segmented_run_2/');
 mkdir(outputDir);
 dirContents = dir(dataDir);
 
 meanWidth = 73.5944; % Mean width calculated from the labeled data
 stdWidth = 8.4463; % std in width calculated from the labeled data
 
-for i = 3:50%size(dirContents,1)
+for i = 3:size(dirContents,1)
     fileName = dirContents(i).name;
     
     if ~all(fileName(end-3:end) == '.pgm')
