@@ -19,7 +19,7 @@ binA = seg_binairy(A);
 %rotatedA = imcomplement(imrotate(imcomplement(binA),0.9));
 
 %crops the image verticaly
-vCroppedA = seg_v_density(rotatedA,0);
+vCroppedA = seg_v_density(rotatedA);
 
 %trims any whitespace from the sides
 trimmedA = seg_trim_image(vCroppedA);
