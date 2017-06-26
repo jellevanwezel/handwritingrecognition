@@ -11,6 +11,7 @@ while count < s.epochs
     % Iterate through all examples
     TrainError = 0;
     for i=1:length(s.trainFeatures(1,:))
+        i
         % Input data from current example set
         input = s.trainFeatures(:,i);
         input(end+s.bias) = s.bias;
@@ -35,7 +36,7 @@ while count < s.epochs
     end
     
  
-    s.trainMSE(count) = TrainError/(2*length(s.trainFeatures(1,:)));
+    s.trainMSE(count) = TrainError/(2*length(s.trainFeatures(1,:)))
 
 end
 
