@@ -10,6 +10,7 @@ end
 
 % Percentage train instances
 s.labels = [labels{:}];
+
 s.trainFeatures = s.features(:, 1:(par.perTrain*length(s.features)));
 s.testFeatures = s.features(:, ((par.perTrain*length(s.features))+1):length(s.features));
 s.trainLabels = s.labels(:, 1:(par.perTrain*length(s.features)));
@@ -19,7 +20,7 @@ s.uniqueLabels = unique(s.labels);
 % KNN
 if par.classifier == 'KNN'
     cd('KNN')
-    [correctlyClassified, s] = KNN(s, par);
+    [correctlyClassified, s] = KNN(s, par, 'trainAndClassify');
 end
 % Initialize network and set parameters
 % cd('NeuralNetwork');

@@ -1,24 +1,28 @@
 clear all; 
 
 %%%%%%%%%%%%% Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+segmentation = true;
+
 importLabeledSigns = false; 
-loadLabeledSigns = true;
+loadLabeledSigns = false;
 
 importAllFonts = false;
 loadAllFonts = false;
 
 resizeLabeledTo100x100 = false;
-loadLabeled100x100 = true;
+loadLabeled100x100 = false;
 
 resizeLabeledToAverage = false;
 loadResizedLabeledAverage= false;
 
 extractGEOfeatures = false;
-loadGEOfeatures = true;
+loadGEOfeatures = false;
 
 extractHOGfeatures = false;
 loadHOGfeatures = false;
-classify = true;
+
+onlyTrain = false;
+classify = false;
 
 %%%%% Parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 par.classifier = 'KNN';
@@ -107,7 +111,11 @@ end
 
 %%%% Segmentation 
 disp('Segmentation............');
-cd('segmentation');
+if segmentation
+    cd('segmentation');
+    TEST_script_segment_dataset
+    cd('..');
+end
 
 
 
@@ -157,7 +165,7 @@ if classify
     classification(features, labels, par);
     cd('..');
 elseif onlyTrain
-    
-    
+    cd('classification');
+ 
 end
 
