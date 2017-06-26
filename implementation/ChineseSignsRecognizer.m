@@ -23,7 +23,7 @@ classify = true;
 %%%%% Parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 par.classifier = 'KNN';
 par.perTrain = 0.70;
-par.numOfNeighbors = 7;
+par.numOfNeighbors = 1;
 par.normalizeFeatures = true;
 par.importKNNmodel = false;
 par.tenfoldcross = true;
