@@ -3,6 +3,7 @@ cd('..');
 cd('dataset');
 cd('Train');
 
+addpath('C:\Users\lvand\Documents\RUG\Handwriting Recognition\handwritingrecognition\implementation\segmentation');
 mkdir('../labeled/');
 
 imageFiles = dir('*.pgm');
@@ -33,7 +34,7 @@ for i=1:nSentences %%% aanpassen in nSentences voor alle data
             
         fonts{j} = regexp(tline, '(?<=<txt>)@\w*'  , 'match'); 
         labels{j} = regexp(tline, '(?<=<utf> )[0-9]+\w*'  , 'match');
-        labeledSigns{j} = imcrop(currentImage, [x, y, w, h]);
+        labeledSigns{j} = imcrop(seg_binairy(currentImage), [x, y, w, h]);
          
         %imshow(labeledSigns{j}); 
         curLabel = char(labels{j});
@@ -49,16 +50,15 @@ for i=1:nSentences %%% aanpassen in nSentences voor alle data
 
     fclose(currentLabel);
    
-   %%T = adaptthresh(currentImage, 0.4);
-   %%BW = imbinarize(currentImage, T);
-   %%imshowpair(currentimage,BW,'montage')
    chineseSentences{i} = currentImage;
 end
-
-
 
 
 
 cd('..');
 cd('..');
 cd('implementation');
+
+save('labeledSigns.mat', 'labeledSigns'); 
+save('labels.mat', 'labels');
+save('fonts.mat', 'fonts');
