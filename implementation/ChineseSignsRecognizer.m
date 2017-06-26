@@ -107,6 +107,7 @@ end
 
 %%%% Segmentation 
 disp('Segmentation............');
+cd('segmentation');
 
 
 
