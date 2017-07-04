@@ -34,10 +34,10 @@ for i = 3:size(dirContents,1)
 
     %crops the image verticaly 
     %vCroppedA = seg_v_density(rotatedA,0); %old version.
-    vCroppedA = seg_v_density_2(rotatedA);
+    vCroppedA = seg_v_density_2(rotatedA); %todo get the amount cropped
     
     %trims any whitespace from the sides
-    trimmedA = seg_trim_image(vCroppedA);
+    trimmedA = seg_trim_image(vCroppedA); %todo get the amount trimmed
     
     %gets the connected components
     characters = seg_concomp(trimmedA);
