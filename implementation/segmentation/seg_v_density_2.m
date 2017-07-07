@@ -1,4 +1,4 @@
-function [ A ] = seg_v_density_2( A )
+function [ A, cropped] = seg_v_density_2( A )
    
     diffRows = zeros(1,size(A,1));
     for j = 1:size(A,1);
@@ -54,6 +54,8 @@ function [ A ] = seg_v_density_2( A )
         minRight = size(A,1);
         minLeft = 1;
     end
+    
+    cropped = [minLeft,size(A,1) - minRight];
     A = A(minLeft:minRight,:);
 end
 
