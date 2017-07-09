@@ -68,6 +68,5 @@ cords = seg_find_cords( newChars, A, trimmedA, [vCropped,hCropped], angle, rotat
 %frames the components on a canvas
 framed = seg_canvas_comps( newChars , trimmedA);
 
-
 seg_show_chars_in_org(A, cords);
 seg_show_chars(A, framed, 4 ,nsb);
