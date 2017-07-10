@@ -8,7 +8,7 @@
 
 clear;
 dataDir = '../../dataset/Train/';
-outputDir = strcat(dataDir,'../Train_segmented_run_2/');
+outputDir = strcat(dataDir,'../Train_segmented_run_3/');
 mkdir(outputDir);
 dirContents = dir(dataDir);
 
@@ -31,13 +31,16 @@ for i = 3:size(dirContents,1)
     
     %rotate image
     [rotatedA,angle] = seg_rotation(binA);
+    
+    %get the amount padded by the rotation
+    rotationPadding = size(rotatedA) - size(A);
 
     %crops the image verticaly 
     %vCroppedA = seg_v_density(rotatedA,0); %old version.
-    vCroppedA = seg_v_density_2(rotatedA); %todo get the amount cropped
+    [vCroppedA, vCropped] = seg_v_density_2(rotatedA);
     
     %trims any whitespace from the sides
-    trimmedA = seg_trim_image(vCroppedA); %todo get the amount trimmed
+    [trimmedA, hCropped] = seg_trim_image(vCroppedA); %todo get the amount trimmed
     
     %gets the connected components
     characters = seg_concomp(trimmedA);
@@ -71,6 +74,9 @@ for i = 3:size(dirContents,1)
         splitted = seg_split_big(characters{j}, meanWidth, stdWidth, 10);
         newChars = {newChars{:},splitted{:}};      
     end
+    
+    %get the cordinates of the chars in the original image
+    cords = seg_find_cords( newChars, A, trimmedA, [vCropped,hCropped], angle, rotationPadding);
 
     %frames the components on a canvas
     framed = seg_canvas_comps( newChars , trimmedA);    
@@ -81,7 +87,9 @@ for i = 3:size(dirContents,1)
     disp(fileName(1:end-4));
     for j = 1:length(framed)
         I = abs(framed{j}-1);
-        imwrite(I,strcat(imageDir,num2str(j),'.png'));
+        cord = cords(j,:);
+        imgCordName = strcat(num2str(j),'-x=',num2str(cord(1)),'-y=',num2str(cord(2)),'-w=',num2str(cord(3)),'-h=',num2str(cord(4)));
+        imwrite(I,strcat(imageDir,imgCordName,'.png'));
     end
     disp(strcat('finished - ', fileName(1:end-4)));
 end
