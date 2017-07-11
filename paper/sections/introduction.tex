@@ -68,7 +68,25 @@ The automotive industry uses character recognition in their autonomous cars. The
 
 Staying on the road character recognition is used for numberplate recognition. It is used by law enforcers to find stolen or unregister vehicles but also as an automated form of speed control. Here a mounted or portable camera is used to take pictures of cars with their number plates and the software recognizes the plates and the characters on them to identify the vehicle. 
 
+\todo[inline]{bruggetje?}
+
+A character recognition system can be roughly divided into three main components: segmentation, feature extraction, and classification.
+
+Segmentation is where an algorithm tries to find the location of the character or sentences in a given image. Before it can start this task the image often is preprocessed. During preprocessing, an image can be binerized and filtered to reduct small noise and other unwanted large components that might be present in the image. Preprocessing can also include rotating, shearing or other morphological operations.
+
+Feature extraction is where the features of the segmented character images are found and measured. For example if an image is black and white a feature could be the ratio between black and white pixels. An other example of a feature could be the amount of horizontal edges in the image by using an edge detector. The type of features that should be extracted depends heavily on the type of dataset. A western handwritten scroll houses different characters and features than Egyptian hieroglyphs.
+
+Classification is where the, until then unknown, characters get assigned a label. This task can be done by a number of algorithms from the simple K-nearest neighbors to complicated multilayer convolutional neural networks. Which algorithm yields the best results depends on the dataset, the segmentation, and the feature extraction.
+
+This paper will focus on the building of pragmatic preprocessing and segmentation system for a Chinese character dataset. There has been done work in the past on Chinese character segmentation by others. From this work we know there are multiple ways of segmenting the Chinese characters. Examples of methods used in the past are: vertical and horizontal projection based, recognition based, skeleton based, and connected component based.
+
+% Tell something about these methods and in what papers they were used.
 
 
+For the created system a combination of various prepossessing techniques, horizontal projection, and connected components was used to segment the dataset. This results in a pragmatic segmentation system that was designed for the given dataset but should also be useful for other Chinese character datasets. The segmented images are used for feature extraction in his paper by Lennart \todo{Lennart achternaam en paper} and classification of the data by Leon \todo{achternaam en paper}.
+
+This work will use labeled data from the given dataset to validate the resulting segmented images and compare these results with results from other methods \todo{what other methods}. The use of already used methods that were shown to have worked in related work \todo{ref} will probably result in a reliable segmentation system.
+
+This paper will continue by explaining a bit more about the dataset. Then the used methods and used parameters will be further explained. After, the type of experiment and how the segmented images were validated will be explained in the Experiment section. From the experiment the results will be shown and discussed. This paper will end with a conclusion on the work done.
 
 % section introduction (end)

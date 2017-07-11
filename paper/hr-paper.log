@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.2)  10 JUL 2017 22:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.2)  11 JUL 2017 14:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1381,12 +1381,41 @@ Package gensymb Info: Using \Omega for \ohm on input line 16.
 
 Package gensymb Warning: Not defining \micro.
 
-(./sections/introduction.tex) (./sections/methods.tex
+(./sections/introduction.tex
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 5.
+ine 71.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (4.2557pt too wide) in paragraph at lines 86--86
+[][][][]\T1/cmr/m/n/10 achternaam 
+ []
+
+
+Overfull \hbox (4.2557pt too wide) in paragraph at lines 86--86
+[][][][]\T1/cmr/m/n/10 achternaam 
+ []
+
+
+Overfull \hbox (4.2557pt too wide) in paragraph at lines 86--86
+[][][][]\T1/cmr/m/n/10 achternaam 
+ []
+
+
+Overfull \hbox (4.2557pt too wide) in paragraph at lines 86--86
+[][][][]\T1/cmr/m/n/10 achternaam 
+ []
+
+
+LaTeX Warning: Marginpar on page 2 moved.
+
+
+LaTeX Warning: Marginpar on page 2 moved.
+
+
+LaTeX Warning: Marginpar on page 2 moved.
+
+) (./sections/methods.tex
 LaTeX Font Info:    Try loading font information for U+msa on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1398,7 +1427,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 19.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [2])
 (./sections/dataset.tex) (./sections/experiment.tex) (./sections/results.tex)
-(./sections/discussion.tex) [3]
+(./sections/discussion.tex) [3] [4]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 43.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 43.
  (./hr-paper.aux)
@@ -1408,13 +1437,13 @@ Package rerunfilecheck Info: File `hr-paper.out' has not changed.
 (rerunfilecheck)             Checksum: 59C6299A2904031396AE75E0B07371EA;453.
  ) 
 Here is how much of TeX's memory you used:
- 29925 strings out of 494953
- 562358 string characters out of 6180978
- 638379 words of memory out of 5000000
- 32731 multiletter control sequences out of 15000+600000
+ 29996 strings out of 494953
+ 563790 string characters out of 6180978
+ 650379 words of memory out of 5000000
+ 32796 multiletter control sequences out of 15000+600000
  9953 words of font info for 28 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 69i,7n,80p,10394b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,9n,80p,10394b,714s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/jelle/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/j
 elle/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/jelle/.texmf
 -var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/jelle/.texmf-var/fonts/
@@ -1424,10 +1453,10 @@ fonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
 0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on hr-paper.pdf (3 pages, 96052 bytes).
+Output written on hr-paper.pdf (4 pages, 101377 bytes).
 PDF statistics:
- 266 PDF objects out of 1000 (max. 8388607)
- 102 compressed objects within 2 object streams
- 21 named destinations out of 1000 (max. 500000)
+ 282 PDF objects out of 1000 (max. 8388607)
+ 111 compressed objects within 2 object streams
+ 27 named destinations out of 1000 (max. 500000)
  85 words of extra memory for PDF output out of 10000 (max. 10000000)
 
