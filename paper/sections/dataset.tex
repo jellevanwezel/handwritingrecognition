@@ -2,18 +2,62 @@
 \section{Dataset} % (fold)
 \label{sec:dataset}
 
-This section will shed light on the used dataset. It will show some examples of the noise encountered and problems that needed to be solved to achieve the segmented images.
+This section will shed light on the used Chinese character dataset. It will show some metrics, examples of the noise encountered, and other problems that needed to be solved to achieve the segmented images.
 
-- size of the dataset
-- amount of labels
-- amount of unique labels
-- amount of unique charecters in the chinese language
-- amount of fonts
-- a little bit more about the individual fonts
+\begin{figure}
+ \centering
+\includegraphics[width=\linewidth]{images/dataset/chinese_example.png}
+ \caption{Example of a typical image in the dataset}
+ \label{fig:dataset:chinese:example}
+\end{figure}
 
-- different kinds of noise in the dataset
-	-Rotation
-	-Lines
-	-Round shapes
-	-Multi line chars
-	-weird chars
+\bigskip
+
+\begin{minipage}{\linewidth}
+\flushleft
+\captionof{table}{Table dataset metrics} \label{tab:dataset:metrics} 
+\begin{tabular}{ c c c c c }
+\hline
+\hline
+Size		& Number of labels 	& Number of unique labels	& Number of unique characters	& Number of fonts\\
+6000 		& 27026				& 589						& 6500							& 7\\
+\hline
+\end{tabular}\par
+\bigskip
+The metrics of the used dataset for segmentation
+\end{minipage}
+
+\bigskip
+
+\noindent Table \ref{tab:dataset:metrics} shows some metrics from the dataset. The size (6000) is smaller than the number of labels (27026). The size is based on the number of images the dataset holds. The images in the dataset consist of unsegmented lines of Chinese characters. An example of a typical image is shown in figure \ref{fig:dataset:chinese:example}. The red box in the image shows the location of an a labeled character. The locations of these labeled characters are given in xml files along with the line images.
+
+The images in the dataset are rows of characters but as shown in figure \ref{fig:dataset:chinese:example} contain sometimes an extra row with one or more characters in it. Sometimes there is whitespace on one or all sides of the image and sometimes the whole image is noise. The character rows are more or less given but the exact location of the the character row needs still to be found in the image.
+
+The Chinese language is generally written from top to bottom. The orientation the images were given in the western orientation of the language, from left to right. Because the whole dataset was in the western orientation the dataset will be handled as such. The horizontal line present in the image is to separate the character rows. This line is not present in all images. The image also shows that the rotation of the image is not straight, it is rotated by a few degrees. The characters them self however do not seem to show a curve. This is also not true for all images, some images do show a slight curvature. The rotation is probably a result of the scanning process. This is mostly done by hand and prone to error. The line could be abused to find the correct rotation of the image. But as stated the line is not present in all images and a different approach would be needed for the images without the line.
+
+Figure \ref{fig:dataset:chinese:example} also shows a `fat' vertical line on the far right side of the image. This line is also present in most images but not all. Sometimes this line shows up on the far left side of the image or on both sides. This line is not a character and needs to be handled as noise. but it can also be used to find the starting and end point of a character row.
+
+\begin{figure}
+ \centering
+\includegraphics[width=\linewidth]{images/dataset/chinese_example_noise.png}
+ \caption{Example of noise found in the dataset}
+ \label{fig:dataset:chinese:example:noise}
+\end{figure}
+
+
+The image shown in figure \ref{fig:dataset:chinese:example:noise} shows some noise on the center characters. 
+
+% - size of the dataset: 6000 images
+% - amount of labels: 27026 labels
+% - amount of unique labels: 589 unique labels
+% - amount of unique characters in the Chinese language: 6500 characters for the simplified form and 13500 traditional
+% - amount of fonts: 7 fonts
+% - a little bit more about the individual fonts
+% 	-an example image each.
+
+% - Different kinds of noise in the dataset
+% 	-Rotation
+% 	-Lines
+% 	-Round shapes
+% 	-Multi line chars
+% 	-weird chars numbers and stuff
