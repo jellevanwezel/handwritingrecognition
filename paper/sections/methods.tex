@@ -9,17 +9,19 @@
 \subsection{Segmentation}
 
 
-The Chinese characters were supplied in greyscale strokes of characters in the western orientation (from left to right).
+As discussed in the introduction (\ref{sec:introduction}) the Chinese characters were supplied in greyscale strokes of characters in the western orientation (from left to right).
 
 %Otsu, N., "A Threshold Selection Method from Gray-Level Histograms," IEEE Transactions on Systems, Man, and Cybernetics, Vol. 9, No. 1, 1979, pp. 62-66.
-In order to segment the characters from an image a combination of methods is used. First the image is binarized. Binarization is done by applying a Gaussian filter on the image to remove some of the noise. Then Otsu's method of finding a threshold is used. The image is then binarized using this threshold.
+In order to segment the characters from an image a combination of methods were used. First the image is binarized. Binarization is done by applying a Gaussian filter on the image to remove some of the pixel noise. Then Otsu's \cite{otsu}  method of finding a threshold is used. The image is then binarized using this threshold.
 
-\todo[inline]{TODO: Add references for Otsu and gausian filtering}
-
-After binarization the image is rotated. This is done because most images in the dataset are titled slightly. This is probably due to some variations in the orientation of the paper during the scanning process. Rotation is done by resizing the image in the vertical direction to half its size. The idea behind this is that the characters will be squeezed together and form a horizontal line this line can then be used to find the optimal rotation. this is done by taking the horizontal densities. The maximum densities are saved for the different rotations (between $+1\degree$ and $-1\degree$). The rotation with the largest maximum density is where the line is likely to be the most horizontal. This is taken as the optimal rotation. 
+After binarization the image is rotated. This is done because most images in the dataset are titled slightly. As discussed in the dataset section (\ref{sec:dataset}) This is probably due to some variations in the orientation of the paper during the scanning process. Rotation is done by resizing the image in the vertical direction to half its size. The idea behind this is that the characters will be squeezed together and form a horizontal line this line can then be used to find the optimal rotation. this is done by taking the horizontal densities. The maximum densities are saved for the different rotations (between $+1\degree$ and $-1\degree$). The rotation with the largest maximum density is where the line is likely to be the most horizontal. This is taken as the optimal rotation. The image is rotated with this optimal angle.
 
 
-After the characters are rotated the vertical location of the characters are located by taking the horizontal densities. The densities are smoothed by using a averaging filter with ten of the neighboring densities. Then the densities are thresholded. The threshold is determined by taking $0.1 \times imageWidth$. From the resulting vertical areas the largest area is taken. This is based on the assumption that characters will produce the most wide peak in horizontal densities. For example many of the images hold a horizontal line above or beneath the characters. This line will produce a narrow but high peak when the horizontal densities are taken. The characters will in this case produce a lower and wider peak. After the determination of the vertical location of the characters the rest of the image is removed leaving only a horizontal stroke of characters.
+After the characters are rotated the vertical location of the characters are located by taking the horizontal densities. The densities are smoothed by using a averaging filter with ten of the neighboring densities. 
+
+\todo[inline]{show densities transformation}
+
+
 
 \todo[inline]{TODO: Add image of the densities}
 

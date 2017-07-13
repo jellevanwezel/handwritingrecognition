@@ -1,9 +1,90 @@
+clear;
+dataDir = '../../dataset/Train/';
+segDir = strcat(dataDir,'../trimmedTest/');
 
-A = [1014,169,67,97]; %rectangle 1
-B = [1014,149,74,114]; %rectangle 2
+globalScores = zeros(1,10);
+labelCount = 0;
 
-interArea = rectint(A,B); %intersection area
-unionArea = A(3) * A(4) + B(3) * B(4) - interArea; %union area
-iou = interArea / unionArea; % intersection over union
+dirContents = dir(dataDir);
+for i = 3:size(dirContents,1)
+    xmlFileName = dirContents(i).name;
+    
+    if ~all(xmlFileName(end-3:end) == '.xml')
+        continue;
+    end
 
-iou
+    fid = fopen([dataDir,xmlFileName]); %opens the file
+    tline = fgets(fid); %gets the line
+    while ischar(tline)
+        labelCount = labelCount + 1;
+        expression = '.*-x=(?<x>[-+]?\d+)-y=(?<y>[-+]?\d+)-w=(?<w>[-+]?\d+)-h=(?<h>[-+]?\d+).*';
+        labelCords = regexp(tline,expression,'names');
+
+        if mod(labelCount,round((27026/100))) == 0
+            disp(labelCount/round((27026/100)));
+        end
+            
+        
+        lx = str2num(labelCords.x);
+        ly = str2num(labelCords.y);
+        lw = str2num(labelCords.w);
+        lh = str2num(labelCords.h);
+        
+        localScores = zeros(1,10);
+
+        %find all names of the segmented files
+        dirSegContents = dir([segDir,xmlFileName(1:end-4)]);
+        
+        for j = 3:size(dirSegContents,1)
+            segmentedFileName = dirSegContents(j).name;
+            
+            if ~all(segmentedFileName(end-3:end) == '.png')
+                continue;
+            end
+            foundCords = regexp(segmentedFileName,expression,'names');
+            
+            fx = str2num(foundCords.x);
+            fy = str2num(foundCords.y);
+            fw = str2num(foundCords.w);
+            fh = str2num(foundCords.h);
+            
+            if(fy < 0)
+                
+                fh = fh + fy;
+                fy = 0;
+                
+            end
+            
+            labelRect = [lx,ly,lw,lh];
+            foundRect = [fx,fy,fw,fh];
+            interArea = rectint(labelRect,foundRect); %intersection area
+            unionArea = (fw * fh) + (lw * lh) - interArea; %union area
+            iou = interArea / unionArea;
+            
+            score = floor(iou * 10) + 1;
+            
+            for k = 1:score
+                localScores(1,k) = 1;
+            end
+            
+%             if(score > 1)
+%                 close all;
+%                 figure;
+%                 hold on;
+%                 imshow([dataDir,xmlFileName(1:end-4),'.pgm']);
+%                 rectangle('Position',labelRect,'LineWidth',2,'EdgeColor','r');
+%                 rectangle('Position',foundRect,'LineWidth',2,'EdgeColor','b');
+%                 hold off;
+%                 waitforbuttonpress;
+%             end
+            
+        end
+        tline = fgets(fid); %gets the next line
+        globalScores = globalScores + localScores;  
+    end
+    fclose(fid);
+
+end
+
+globalScores = globalScores(1,2:end);
+globalScores = globalScores / labelCount;

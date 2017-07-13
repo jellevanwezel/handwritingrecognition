@@ -46,6 +46,16 @@ for i = 1:size(comps,2)
     x = round(x - (rotationPadding(2)));
     y = round(y - (rotationPadding(1)));
     
+    if(y<0)
+        h = h + y;
+        y = 0;
+    end
+    
+    if(y + h > rotImgSize(1))
+        h = h - ((y + h) - rotImgSize(1));
+        y = rotImgSize(1) - h;
+    end
+    
     %Compensate for the rotation padding 
     
     cords(i,:) = [x,y,w,h];

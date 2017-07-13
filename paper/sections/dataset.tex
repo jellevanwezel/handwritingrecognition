@@ -4,7 +4,7 @@
 
 This section will shed light on the used Chinese character dataset. It will show some metrics, examples of the noise encountered, and other problems that needed to be solved to achieve the segmented images.
 
-\begin{figure}
+\begin{figure}[ht]
  \centering
 \includegraphics[width=\linewidth]{images/dataset/chinese_example.png}
  \caption{Example of a typical image in the dataset}
@@ -15,7 +15,7 @@ This section will shed light on the used Chinese character dataset. It will show
 
 \begin{minipage}{\linewidth}
 \flushleft
-\captionof{table}{Table dataset metrics} \label{tab:dataset:metrics} 
+\captionof{table}{Dataset metrics} \label{tab:dataset:metrics} 
 \begin{tabular}{ c c c c c }
 \hline
 \hline
@@ -31,21 +31,83 @@ The metrics of the used dataset for segmentation
 
 \noindent Table \ref{tab:dataset:metrics} shows some metrics from the dataset. The size (6000) is smaller than the number of labels (27026). The size is based on the number of images the dataset holds. The images in the dataset consist of unsegmented lines of Chinese characters. An example of a typical image is shown in figure \ref{fig:dataset:chinese:example}. The red box in the image shows the location of an a labeled character. The locations of these labeled characters are given in xml files along with the line images.
 
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}{0.13\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./images/dataset/font1.jpg}
+    \caption{ChaoMing}
+    \label{fig:dataset:font:1}
+  \end{subfigure}
+  \begin{subfigure}{0.13\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./images/dataset/font2.jpg}
+    \caption{CuoKai}
+    \label{fig:dataset:font:2}
+  \end{subfigure}
+  \begin{subfigure}{0.13\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./images/dataset/font3.jpg}
+    \caption{HeiTi}
+    \label{fig:dataset:font:3}
+  \end{subfigure}
+  \begin{subfigure}{0.13\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./images/dataset/font4.jpg}
+    \caption{MingTi}
+    \label{fig:dataset:font:4}
+  \end{subfigure}
+  \begin{subfigure}{0.13\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./images/dataset/font5.jpg}
+    \caption{TeMing}
+    \label{fig:dataset:font:5}
+  \end{subfigure}
+  \begin{subfigure}{0.13\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./images/dataset/font6.jpg}
+    \caption{XinSong}
+    \label{fig:dataset:font:6}
+  \end{subfigure}
+  \begin{subfigure}{0.13\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./images/dataset/font7.jpg}
+    \caption{YanKai}
+    \label{fig:dataset:font:7}
+  \end{subfigure}
+  \caption{The Chinese printed fonts present in the dataset.}
+  \label{fig:dataset:fonts}
+\end{figure}
+
+The fonts used in the dataset are shown in figure \ref{fig:dataset:fonts}. There are seven fonts in total, which show a similarity with the characters in the images in the dataset. It seems assumable from this observation that the characters were printed instead of handwritten.
+
 The images in the dataset are rows of characters but as shown in figure \ref{fig:dataset:chinese:example} contain sometimes an extra row with one or more characters in it. Sometimes there is whitespace on one or all sides of the image and sometimes the whole image is noise. The character rows are more or less given but the exact location of the the character row needs still to be found in the image.
 
-The Chinese language is generally written from top to bottom. The orientation the images were given in the western orientation of the language, from left to right. Because the whole dataset was in the western orientation the dataset will be handled as such. The horizontal line present in the image is to separate the character rows. This line is not present in all images. The image also shows that the rotation of the image is not straight, it is rotated by a few degrees. The characters them self however do not seem to show a curve. This is also not true for all images, some images do show a slight curvature. The rotation is probably a result of the scanning process. This is mostly done by hand and prone to error. The line could be abused to find the correct rotation of the image. But as stated the line is not present in all images and a different approach would be needed for the images without the line.
+The Chinese language is generally written from top to bottom. The orientation of the images is however in the western orientation of the language, from left to right. Because the whole dataset was in the western orientation the dataset will be handled as such. The horizontal line present in the image is to separate the character rows. This line is not present in all images. The image also shows that the rotation of the image is not straight, it is rotated by a few degrees. The characters them self however do not seem to show a curve. This is also not true for all images, some images do show a slight curvature. The rotation is probably a result of the scanning process. This is mostly done by hand and prone to error. The line could be abused to find the correct rotation of the image. But as stated the line is not present in all images and a different approach would be needed for the images without the line.
 
 Figure \ref{fig:dataset:chinese:example} also shows a `fat' vertical line on the far right side of the image. This line is also present in most images but not all. Sometimes this line shows up on the far left side of the image or on both sides. This line is not a character and needs to be handled as noise. but it can also be used to find the starting and end point of a character row.
 
-\begin{figure}
- \centering
-\includegraphics[width=\linewidth]{images/dataset/chinese_example_noise.png}
- \caption{Example of noise found in the dataset}
- \label{fig:dataset:chinese:example:noise}
+\begin{figure}[ht]
+  	\centering
+  	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{images/dataset/chinese_example_noise.png}
+ 		\caption{Partial noise}
+ 		\label{fig:dataset:noise:partial}
+	\end{subfigure}
+
+	\begin{subfigure}{\textwidth}
+ 		\centering
+		\includegraphics[width=\linewidth]{images/dataset/chinese_example_whole_noise.png}
+ 		\caption{Whole image noise}
+ 		\label{fig:dataset:noise:whole}
+   	\end{subfigure}
+    \caption{Examples of noise found in the dataset}
+	\label{fig:dataset:noise}
 \end{figure}
 
 
-The image shown in figure \ref{fig:dataset:chinese:example:noise} shows some noise on the center characters. 
+The image shown in figure \ref{fig:dataset:noise:partial} illustrates noise on the center characters often found in this dataset. This noise might be the result of water damage or perforation of the sheet where the characters were originally on. This noise could be resolved with morphological operations and using a dataset specific filter. The dataset also contains some images that are by them self noise. Figure \ref{fig:dataset:noise:whole} shows an image that is complete noise. This specific image seems to be located to low during the scanning process. This resulted in only half of the original characters showing in the dataset.
 
 % - size of the dataset: 6000 images
 % - amount of labels: 27026 labels
@@ -61,3 +123,14 @@ The image shown in figure \ref{fig:dataset:chinese:example:noise} shows some noi
 % 	-Round shapes
 % 	-Multi line chars
 % 	-weird chars numbers and stuff
+
+
+%font names:
+% Chinese Printed ChaoMing
+% Chinese Printed CuoKai
+% Chinese Printed HeiTi
+% Chinese Printed MingTi
+% Chinese Printed TeMing
+% Chinese Printed XinSong
+% Chinese Printed YanKai
+
