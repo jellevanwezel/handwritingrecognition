@@ -2,7 +2,7 @@ clear;
 dataDir = '../../dataset/Train/';
 segDir = strcat(dataDir,'../trimmedTest/');
 
-globalScores = zeros(1,10);
+globalScores = zeros(1,11);
 labelCount = 0;
 
 dirContents = dir(dataDir);
@@ -12,7 +12,13 @@ for i = 3:size(dirContents,1)
     if ~all(xmlFileName(end-3:end) == '.xml')
         continue;
     end
-
+    
+    if(mod(i,round(size(dirContents,1) / 100)) == 0)
+        disp(i/round(size(dirContents,1) / 100));
+    end
+    
+    orgImg = imread([dataDir,xmlFileName(1:end-4),'.pgm']);
+    
     fid = fopen([dataDir,xmlFileName]); %opens the file
     tline = fgets(fid); %gets the line
     while ischar(tline)
@@ -30,7 +36,7 @@ for i = 3:size(dirContents,1)
         lw = str2num(labelCords.w);
         lh = str2num(labelCords.h);
         
-        localScores = zeros(1,10);
+        localScores = zeros(1,11);
 
         %find all names of the segmented files
         dirSegContents = dir([segDir,xmlFileName(1:end-4)]);
@@ -55,11 +61,12 @@ for i = 3:size(dirContents,1)
                 
             end
             
-            labelRect = [lx,ly,lw,lh];
-            foundRect = [fx,fy,fw,fh];
-            interArea = rectint(labelRect,foundRect); %intersection area
-            unionArea = (fw * fh) + (lw * lh) - interArea; %union area
-            iou = interArea / unionArea;
+             labelRect = [lx,ly,lw,lh];
+             foundRect = [fx,fy,fw,fh];
+%             interArea = rectint(labelRect,foundRect); %intersection area
+%             unionArea = (fw * fh) + (lw * lh) - interArea; %union area            
+%             iou = interArea / unionArea;
+            iou = seg_iou(labelRect,foundRect,orgImg);
             
             score = floor(iou * 10) + 1;
             
@@ -80,7 +87,7 @@ for i = 3:size(dirContents,1)
             
         end
         tline = fgets(fid); %gets the next line
-        globalScores = globalScores + localScores;  
+        globalScores = globalScores + localScores;
     end
     fclose(fid);
 
