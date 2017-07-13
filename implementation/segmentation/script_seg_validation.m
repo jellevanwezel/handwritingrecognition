@@ -4,18 +4,26 @@ segDir = strcat(dataDir,'../trimmedTest/');
 
 globalScores = zeros(1,11);
 labelCount = 0;
+% fileCount = 0;
 
 dirContents = dir(dataDir);
-for i = 3:size(dirContents,1)
+
+
+%globalScores = zeros(size(dirContents,1),11);
+
+parfor i = 3:size(dirContents,1)
     xmlFileName = dirContents(i).name;
     
     if ~all(xmlFileName(end-3:end) == '.xml')
         continue;
     end
     
-    if(mod(i,round(size(dirContents,1) / 100)) == 0)
-        disp(i/round(size(dirContents,1) / 100));
-    end
+%     fileCount = fileCount + 1;
+%     
+%     if mod(fileCount,60) == 0
+%         disp(fileCount / 60);
+%     end
+    
     
     orgImg = imread([dataDir,xmlFileName(1:end-4),'.pgm']);
     
@@ -25,12 +33,7 @@ for i = 3:size(dirContents,1)
         labelCount = labelCount + 1;
         expression = '.*-x=(?<x>[-+]?\d+)-y=(?<y>[-+]?\d+)-w=(?<w>[-+]?\d+)-h=(?<h>[-+]?\d+).*';
         labelCords = regexp(tline,expression,'names');
-
-        if mod(labelCount,round((27026/100))) == 0
-            disp(labelCount/round((27026/100)));
-        end
-            
-        
+                    
         lx = str2num(labelCords.x);
         ly = str2num(labelCords.y);
         lw = str2num(labelCords.w);
