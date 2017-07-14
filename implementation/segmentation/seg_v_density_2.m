@@ -8,6 +8,7 @@ function [ A, cropped] = seg_v_density_2( A )
     end
     
     filtered = filter(1/20 * ones(20,1),1,diffRows);
+    
     dFiltered = filter([-1,0,1],1,filtered);
     
     [maxValue, rowMax] = max(filtered);
@@ -30,7 +31,7 @@ function [ A, cropped] = seg_v_density_2( A )
     for i = 1:size(minLefts,2)
         minRow = minLefts(i);
         if filtered(1,minRow) < halfMax
-            minLeft = minRow - 20 + 10; % sneaky 10
+            minLeft = minRow - 20; % sneaky 10
             if minLeft < 1
                 minLeft = 1;
             end
@@ -42,7 +43,7 @@ function [ A, cropped] = seg_v_density_2( A )
     for i = 1:size(minRights,2)
         minRow = minRights(i);
         if filtered(1,minRow) < halfMax
-            minRight = minRow - 20 - 10; % sneaky 10
+            minRight = minRow - 20;
             if minRight < 1
                 minRight = size(A,1);
             end

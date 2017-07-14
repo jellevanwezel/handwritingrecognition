@@ -16,11 +16,11 @@ This section will shed light on the used Chinese character dataset. It will show
 \begin{minipage}{\linewidth}
 \flushleft
 \captionof{table}{Dataset metrics} \label{tab:dataset:metrics} 
-\begin{tabular}{ c c c c c }
+\begin{tabular}{ c c c c c c c}
 \hline
 \hline
-Size		& Number of labels 	& Number of unique labels	& Number of unique characters	& Number of fonts\\
-6000 		& 27026				& 589						& 6500							& 7\\
+Size		& Labels 	& Unique labels	& Unique characters	& Fonts & $\mu_{lw}$ & $\sigma_{lw}$\\
+6000 		& 27026				  & 589						  & 6500					& 7       & 73.5944 px   & 8.4463 px\\
 \hline
 \end{tabular}\par
 \bigskip
@@ -29,7 +29,7 @@ The metrics of the used dataset for segmentation
 
 \bigskip
 
-\noindent Table \ref{tab:dataset:metrics} shows some metrics from the dataset. The size (6000) is smaller than the number of labels (27026). The size is based on the number of images the dataset holds. The images in the dataset consist of unsegmented lines of Chinese characters. An example of a typical image is shown in figure \ref{fig:dataset:chinese:example}. The red box in the image shows the location of an a labeled character. The locations of these labeled characters are given in xml files along with the line images.
+\noindent Table \ref{tab:dataset:metrics} shows some metrics from the dataset. The size (6000) is smaller than the number of labels (27026). The size is based on the number of images the dataset holds. The images in the dataset consist of unsegmented lines of Chinese characters. An example of a typical image is shown in figure \ref{fig:dataset:chinese:example}. The red box in the image shows the location of an a labeled character. The locations of these labeled characters are given in xml files along with the line images. The $\mu_{lw}$ and $\sigma_{lw}$ signify the mean with of the labels and the standard variation in width of the labels in the dataset.
 
 \begin{figure}[ht]
   \centering

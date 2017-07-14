@@ -1,9 +1,25 @@
 \begin{thebibliography}{1}
 
+\bibitem{Duda}
+Abraham Bookstein.
+\newblock Pattern classification and scene analysis. richard o. duda , peter e.
+  hart.
+\newblock {\em The Library Quarterly}, 44(3):258--259, 1974.
+
 \bibitem{otsu}
 N.~Otsu.
 \newblock A threshold selection method from gray-level histograms.
 \newblock {\em IEEE Transactions on Systems, Man, and Cybernetics},
   9(1):62--66, Jan 1979.
+
+\bibitem{Sedgewick}
+Robert Sedgewick.
+\newblock {\em Algorithms in C}.
+\newblock Addison-Wesley, 3rd edition, 1998.
+
+\bibitem{Sobel}
+Irwin Sobel.
+\newblock History and definition of the so-called "sobel operator".
+\newblock 2014.
 
 \end{thebibliography}
