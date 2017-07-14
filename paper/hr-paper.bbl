@@ -1,10 +1,22 @@
 \begin{thebibliography}{1}
 
+\bibitem{knn}
+N.~S. Altman.
+\newblock An introduction to kernel and nearest-neighbor nonparametric
+  regression.
+\newblock {\em The American Statistician}, 46(3):175--185, 1992.
+
 \bibitem{Duda}
 Abraham Bookstein.
 \newblock Pattern classification and scene analysis. richard o. duda , peter e.
   hart.
 \newblock {\em The Library Quarterly}, 44(3):258--259, 1974.
+
+\bibitem{lecun}
+Y.~LeCun, L.~Bottou, Y.~Bengio, and P.~Haffner.
+\newblock Gradient-based learning applied to document recognition.
+\newblock In {\em Intelligent Signal Processing}, pages 306--351. IEEE Press,
+  2001.
 
 \bibitem{otsu}
 N.~Otsu.

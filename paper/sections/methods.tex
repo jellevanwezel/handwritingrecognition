@@ -4,16 +4,16 @@
 
 This section will show what methods where used to segment the dataset. It will do so in a chronological order based on the example image shown in section \ref{sec:dataset} in figure \ref{fig:dataset:chinese:example}.
 
-\subsection{Segmentation}
+\subsection{Rotation and binarization}
 
 
 As discussed in the introduction (\ref{sec:introduction}) the Chinese characters were supplied in greyscale strokes of characters in the western orientation (from left to right).
 
-%Otsu, N., "A Threshold Selection Method from Gray-Level Histograms," IEEE Transactions on Systems, Man, and Cybernetics, Vol. 9, No. 1, 1979, pp. 62-66.
 In order to segment the characters from an image a combination of methods were used. First the image is binarized. Binarization is done by applying a Gaussian filter on the image to remove some of the pixel noise. Then Otsu's \cite{otsu}  method of finding a threshold is used. The image is then binarized using this threshold.
 
 After binarization the image is rotated. This is done because most images in the dataset are titled slightly. As discussed in the dataset section (\ref{sec:dataset}) This is probably due to some variations in the orientation of the paper during the scanning process. Rotation is done by resizing the image in the vertical direction to half its size. The idea behind this is that the characters will be squeezed together and form a horizontal line, this line can then be used to find the optimal rotation. This is done by taking the horizontal densities. The maximum densities are saved for the different rotations (between $+1\degree$ and $-1\degree$). The rotation with the largest maximum density is where the line is likely to be the most horizontal. This is taken as the optimal rotation. The image is rotated with this optimal angle.
 
+\subsection{Vertical location}
 
 \begin{figure}[ht]
   \centering
@@ -33,10 +33,21 @@ After binarization the image is rotated. This is done because most images in the
   \label{fig:method:vertical:location}
 \end{figure}
 
-
 After the characters are rotated the location of the characters is determined on the vertical axes. The used method to determine this location is horizontal projection on the changes in pixels from black to white. On the densities an averaging filter is first applied. Each row is averaged with ten of its neighbor rows. To ilustrate this the changes in densities were taken on the example image shown in the dataset section (\ref{fig:dataset:chinese:example}). The effect of the averaging is clearly visible in figure \ref{fig:method:vertical:location}. In figure \ref{fig:method:unfiltered} the unfiltered image is show. The plot has many peaks and also the top black line is clearly visible in the densities on the left side of the image. In figure \ref{fig:method:filtered} the filtered image is shown. Only the global peaks stay and the noise peak from the black line has almost disappeared.
 
-In order to find the location of the characters, the global maximum of changes in densities is taken. This is always the top of the highest peak of the characters. To find the bases on both sides of the peak a Sobel operator is used. Sobel's operators can be used to find the gradient in a signal, demonstrated in a paper by Richard O. Duda and Peter E. Hart (\cite{Duda}) and later by Sobel self (\cite{Sobel}). To find these minima The half of the max is taken and from this half the first occurrence where the gradient crosses zero in the left and right direction is taken as a base of the mountain. The half of the max is used because on the top of the plot sometimes goes up and down even with the average filtering. The half max makes sure the whole height of the characters is taken. After determining the vertical location of the characters the image is cropped accordingly. Whitespace on the left and right side of the image is also removed.
+
+\begin{figure}[ht]
+  \begin{minipage}{\linewidth}
+    \centering
+    \[S=\left[\begin{array}{ccc}
+		-1 & 0 & 1
+    \end{array}\right]\]
+  \end{minipage}%
+  \caption{Sobel opperator}
+  \label{mat:method:sobel}
+\end{figure}
+
+In order to find the location of the characters, the global maximum of changes in densities is taken. This is always the top of the highest peak of the characters. To find the bases on both sides of the peak a Sobel operator is used (shown in figure \ref{mat:method:sobel}). Sobel's operators can be used to find the gradient in a signal, demonstrated in a paper by Richard O. Duda and Peter E. Hart (\cite{Duda}) and later by Sobel self (\cite{Sobel}). To find these minima The half of the max is taken and from this half the first occurrence where the gradient crosses zero in the left and right direction is taken as a base of the mountain. The half of the max is used because on the top of the plot sometimes goes up and down even with the average filtering. The half max makes sure the whole height of the characters is taken. After determining the vertical location of the characters the image is cropped accordingly. Whitespace on the left and right side of the image is also removed.
 
 \begin{figure}[ht]
   \centering
@@ -44,6 +55,8 @@ In order to find the location of the characters, the global maximum of changes i
   \caption{Rotated and cropped image}
   \label{fig:method:vertical:cropped}
 \end{figure}
+
+\subsection{Connected components}
 
 We are left with the row of characters. An example is shown in figure \ref{fig:method:vertical:cropped}. This image is rotated and cropped from figure \ref{fig:dataset:chinese:example}. In order to find the characters in this row the connected components are taken. These are taken with the method described by Sedgewick (\cite{Sedgewick}). Sedgewick's method will give us a list of all the connected components in the image. If multiple components are above each other we assume that these components are part of the same character. These components are merged. Some components are not directly on top of each-other. It is determent how much the components overlap vertically. If the overlapping width is larger or the same as $0.4$ times the width of the smaller of the two components, they are merged. This is done to make sure the components are on top of each other and not some small part of one component is on top of an other component.
 
@@ -70,6 +83,8 @@ The small components that are left in the list are now merged with the smallest 
 After merging all small components are dealt with. The component list still contains big out-liers. Some might even been created during merging. These components are spitted by projecting the variations in white pixels to black pixels (or the amount of fluctuations in white pixels). Where there are less variations there is more white space. The characters are split on where the fluctuations of the whitespace is minimal. After splitting the components are reevaluated on width. If a component is determined big it is split again. This is done until the component is not big anymore.
 
 
+\subsection{Finding the character box}
+
 With the split big components the segmentation part is completed. In order to validate the segmented images the location of the characters need to be determined in the original image. Because the image is rotated before segmentation the locations of the segmented images need to be rotated to point to the correct location in the original image. The location of the segmented characters is given by taking the $x$,$y$,$width$ and $height$ variables. This creates a rectangle on the original image where a character is determined to be. But because the characters outputted by the segmentation system are (merged) connected components there might be parts of other characters present in the rectangle that are not present in the character outputted by the segmentation system.
 
 The approximation of the rectangle is made by calculating  all corner coordinates of the rectangle by taking the max and min row and column of the characters in the rotated image. Then these coordinates are rotated with the following formulas:
@@ -95,9 +110,4 @@ The height is calculated in a similar fashion:
 \end{equation}
 
 These equations give the $x$,$y$,$width$ and $height$ variables needed to reconstruct the rectangle. After approximating the rectangle the characters are saved for use in the feature extractor and later the classifier of the character segmentation system.
-
-\subsection{Feature Extraction}
-
-\subsection{Classification}
-
 % section method (end

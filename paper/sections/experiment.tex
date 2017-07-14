@@ -2,7 +2,65 @@
 \section{Experiment} % (fold)
 \label{sec:experiment}
 
+This section will show by example how the segmented dataset is validated.  
+
 % how the labels are used with our images to validate our images.
 % IOU
+
+
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./images/experiment/intersection.png}
+    \caption{Intersected area}
+    \label{fig:experiment:intersection}
+  \end{subfigure}
+  \begin{subfigure}{0.25\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./images/experiment/union.png}
+    \caption{Area of the union}
+    \label{fig:experiment:union}
+  \end{subfigure}
+  \caption{Method of validating the segmented data (intersection over union)}
+  \label{fig:experiment:iou}
+\end{figure}
+
+In order to validate the segmented images obtained by the segmentation the intersection over union is used. As shown in figure \ref{fig:experiment:intersection} the intersection between two boxes is the area that overlaps between these boxes. The union over two boxes give the area both the boxes occupy (figure \ref{fig:experiment:union}). The fraction between the intersection and the union tells us how well the boxes fit on top of each other. With this fraction the performance of the segmentation can be measured.
+
+Because the characters consist mainly of black pixels, and the location of the box is arbitrary, the intersection over union is done only over the black pixels in both boxes. This is done by binerizing the original image and taking its complement. The complement is taken so black pixels will be represented by ones and white pixels by zeros. Now the labeled box and a segmented box are both printed on a white background the size of the original image. This results in two binary images on which an And is the same as the intersection, an Or is the same as a union. Summing the result from these operations give us the needed scalers to perform the intersection over union fraction.
+
+ \begin{figure}[ht]
+  \centering
+  \begin{subfigure}{0.24\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{./images/experiment/label.png}
+    \caption{Label image}
+    \label{fig:experiment:label}
+  \end{subfigure}
+  \begin{subfigure}{0.24\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{./images/experiment/found.png}
+    \caption{Segmented image}
+    \label{fig:experiment:found}
+  \end{subfigure}
+    \begin{subfigure}{0.24\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{./images/experiment/and.png}
+    \caption{Label and Segmented}
+    \label{fig:experiment:and}
+  \end{subfigure}
+  \begin{subfigure}{0.24\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{./images/experiment/or.png}
+    \caption{Label or Segmented}
+    \label{fig:experiment:or}
+  \end{subfigure}
+  \caption{Example of intersection over union on a segmented character in the dataset, $IoU \approx 0.73$. The character used is the twelfth character in the image shown in figure \ref{fig:dataset:chinese:example}. }
+  \label{fig:experiment:iou:example}
+\end{figure}
+
+In order to be able to say anything about the performance of the segmentation results will be thresholded from an intersection over union rate from 0.1 to 10. if the intersection over union is lower than 0.1 the boxes are not touching each other enough.
+
 
 % section experiment (end)
