@@ -6,8 +6,13 @@ fileCount = 0;
 
 globalScores = zeros(1,11);
 labelCount = 0;
+% fileCount = 0;
 
 dirContents = dir(dataDir);
+
+
+%globalScores = zeros(size(dirContents,1),11);
+
 for i = 3:size(dirContents,1)
     xmlFileName = dirContents(i).name;
     
@@ -29,8 +34,6 @@ for i = 3:size(dirContents,1)
         labelCount = labelCount + 1;
         expression = '.*-x=(?<x>[-+]?\d+)-y=(?<y>[-+]?\d+)-w=(?<w>[-+]?\d+)-h=(?<h>[-+]?\d+).*';
         labelCords = regexp(tline,expression,'names');
-            
-        
         lx = str2num(labelCords.x);
         ly = str2num(labelCords.y);
         lw = str2num(labelCords.w);
