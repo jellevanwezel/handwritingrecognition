@@ -7,15 +7,17 @@
 %  - Check if too big chars are actualy multiple chars at the end. (maybe with the vertical density.)
 
 clear;
+runNumber = 4;
+runName = ['Train_segmented_run_',num2str(runNumber)];
 dataDir = '../../dataset/Train/';
-outputDir = strcat(dataDir,'../Train_segmented_run_3/');
+outputDir = strcat(dataDir,'../',runName,'/');
 mkdir(outputDir);
 dirContents = dir(dataDir);
 
 meanWidth = 73.5944; % Mean width calculated from the labeled data
 stdWidth = 8.4463; % std in width calculated from the labeled data
 
-for i = 3:size(dirContents,1)
+for i = 3:10%size(dirContents,1)
     fileName = dirContents(i).name;
     
     if ~all(fileName(end-3:end) == '.pgm')
@@ -93,3 +95,8 @@ for i = 3:size(dirContents,1)
     end
     disp(strcat('finished - ', fileName(1:end-4)));
 end
+
+disp('Segmentation Done');
+disp('Zipping...');
+zip([dataDir,'../',runName,'.zip'],outputDir);
+disp('Zipping Done');

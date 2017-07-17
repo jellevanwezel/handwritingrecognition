@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.2)  14 JUL 2017 17:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.2)  14 JUL 2017 23:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1383,156 +1383,130 @@ Package gensymb Warning: Not defining \micro.
 
 (./sections/introduction.tex [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 84.
-
-Overfull \hbox (4.2557pt too wide) in paragraph at lines 87--87
-[][][][]\T1/cmr/m/n/10 achternaam 
- []
-
-
-Overfull \hbox (4.2557pt too wide) in paragraph at lines 87--87
-[][][][]\T1/cmr/m/n/10 achternaam 
- []
-
-
-Overfull \hbox (4.2557pt too wide) in paragraph at lines 87--87
-[][][][]\T1/cmr/m/n/10 achternaam 
- []
-
-
-Overfull \hbox (4.2557pt too wide) in paragraph at lines 87--87
-[][][][]\T1/cmr/m/n/10 achternaam 
- []
-
-
-LaTeX Warning: Marginpar on page 2 moved.
-
-) (./sections/dataset.tex
-<images/dataset/chinese_example.png, id=62, 2308.625pt x 291.0875pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]) (./sections/dataset.tex [
+2]
+<images/dataset/chinese_example.png, id=86, 2308.625pt x 291.0875pt>
 File: images/dataset/chinese_example.png Graphic file (type png)
 
 <use images/dataset/chinese_example.png>
 Package pdftex.def Info: images/dataset/chinese_example.png used on input line 
-9.
+10.
 (pdftex.def)             Requested size: 424.58624pt x 53.53497pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 18.
+(caption)                particular \caption on input line 19.
 See the caption package documentation for explanation.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 19.
+LaTeX Font Info:    Try loading font information for U+msa on input line 20.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 19.
+LaTeX Font Info:    Try loading font information for U+msb on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (15.0pt too wide) in paragraph at lines 16--29
+Overfull \hbox (15.0pt too wide) in paragraph at lines 17--30
 []$[]$ 
  []
 
-[2 <./images/dataset/chinese_example.png (PNG copy)>]
-<./images/dataset/font1.jpg, id=79, 100.375pt x 100.375pt>
+<./images/dataset/font1.jpg, id=89, 100.375pt x 100.375pt>
 File: ./images/dataset/font1.jpg Graphic file (type jpg)
 
 <use ./images/dataset/font1.jpg>
-Package pdftex.def Info: ./images/dataset/font1.jpg used on input line 38.
+Package pdftex.def Info: ./images/dataset/font1.jpg used on input line 39.
 (pdftex.def)             Requested size: 55.19827pt x 55.19875pt.
 
-Underfull \hbox (badness 3088) in paragraph at lines 39--39
+Underfull \hbox (badness 3088) in paragraph at lines 40--40
 []\T1/cmr/bx/n/9 (a) |\T1/cmr/m/n/9 ChaoM-
  []
 
-<./images/dataset/font2.jpg, id=80, 100.375pt x 100.375pt>
+<./images/dataset/font2.jpg, id=90, 100.375pt x 100.375pt>
 File: ./images/dataset/font2.jpg Graphic file (type jpg)
 
 <use ./images/dataset/font2.jpg>
-Package pdftex.def Info: ./images/dataset/font2.jpg used on input line 44.
+Package pdftex.def Info: ./images/dataset/font2.jpg used on input line 45.
 (pdftex.def)             Requested size: 55.19827pt x 55.19875pt.
 
-<./images/dataset/font3.jpg, id=81, 100.375pt x 100.375pt>
+<./images/dataset/font3.jpg, id=91, 100.375pt x 100.375pt>
 File: ./images/dataset/font3.jpg Graphic file (type jpg)
 
 <use ./images/dataset/font3.jpg>
-Package pdftex.def Info: ./images/dataset/font3.jpg used on input line 50.
+Package pdftex.def Info: ./images/dataset/font3.jpg used on input line 51.
 (pdftex.def)             Requested size: 55.19827pt x 55.19875pt.
 
-<./images/dataset/font4.jpg, id=82, 100.375pt x 100.375pt>
+<./images/dataset/font4.jpg, id=92, 100.375pt x 100.375pt>
 File: ./images/dataset/font4.jpg Graphic file (type jpg)
 
 <use ./images/dataset/font4.jpg>
-Package pdftex.def Info: ./images/dataset/font4.jpg used on input line 56.
+Package pdftex.def Info: ./images/dataset/font4.jpg used on input line 57.
 (pdftex.def)             Requested size: 55.19827pt x 55.19875pt.
 
-<./images/dataset/font5.jpg, id=83, 100.375pt x 100.375pt>
+<./images/dataset/font5.jpg, id=93, 100.375pt x 100.375pt>
 File: ./images/dataset/font5.jpg Graphic file (type jpg)
 
 <use ./images/dataset/font5.jpg>
-Package pdftex.def Info: ./images/dataset/font5.jpg used on input line 62.
+Package pdftex.def Info: ./images/dataset/font5.jpg used on input line 63.
 (pdftex.def)             Requested size: 55.19827pt x 55.19875pt.
 
-<./images/dataset/font6.jpg, id=84, 100.375pt x 100.375pt>
+<./images/dataset/font6.jpg, id=94, 100.375pt x 100.375pt>
 File: ./images/dataset/font6.jpg Graphic file (type jpg)
 
 <use ./images/dataset/font6.jpg>
-Package pdftex.def Info: ./images/dataset/font6.jpg used on input line 68.
+Package pdftex.def Info: ./images/dataset/font6.jpg used on input line 69.
 (pdftex.def)             Requested size: 55.19827pt x 55.19875pt.
 
-<./images/dataset/font7.jpg, id=85, 100.375pt x 100.375pt>
+<./images/dataset/font7.jpg, id=95, 100.375pt x 100.375pt>
 File: ./images/dataset/font7.jpg Graphic file (type jpg)
 
 <use ./images/dataset/font7.jpg>
-Package pdftex.def Info: ./images/dataset/font7.jpg used on input line 74.
+Package pdftex.def Info: ./images/dataset/font7.jpg used on input line 75.
 (pdftex.def)             Requested size: 55.19827pt x 55.19875pt.
-
-<images/dataset/chinese_example_noise.png, id=89, 2208.25pt x 161.60374pt>
+ [3 <./images/dataset/chinese_example.png (PNG copy)> <./images/dataset/font1.j
+pg> <./images/dataset/font2.jpg> <./images/dataset/font3.jpg> <./images/dataset
+/font4.jpg> <./images/dataset/font5.jpg> <./images/dataset/font6.jpg> <./images
+/dataset/font7.jpg>]
+<images/dataset/chinese_example_noise.png, id=108, 2208.25pt x 161.60374pt>
 File: images/dataset/chinese_example_noise.png Graphic file (type png)
 
 <use images/dataset/chinese_example_noise.png>
 Package pdftex.def Info: images/dataset/chinese_example_noise.png used on input
- line 94.
+ line 95.
 (pdftex.def)             Requested size: 424.58624pt x 31.06998pt.
 
-<images/dataset/chinese_example_whole_noise.png, id=90, 2273.49374pt x 80.3pt>
+<images/dataset/chinese_example_whole_noise.png, id=109, 2273.49374pt x 80.3pt>
 File: images/dataset/chinese_example_whole_noise.png Graphic file (type png)
-
 <use images/dataset/chinese_example_whole_noise.png>
 Package pdftex.def Info: images/dataset/chinese_example_whole_noise.png used on
- input line 101.
+ input line 102.
 (pdftex.def)             Requested size: 424.58624pt x 14.99617pt.
 ) (./sections/methods.tex
-[3 <./images/dataset/font1.jpg> <./images/dataset/font2.jpg> <./images/dataset/
-font3.jpg> <./images/dataset/font4.jpg> <./images/dataset/font5.jpg> <./images/
-dataset/font6.jpg> <./images/dataset/font7.jpg> <./images/dataset/chinese_examp
-le_noise.png (PNG copy)> <./images/dataset/chinese_example_whole_noise.png>]
-<./images/method/unfiltered.png, id=106, 557.83406pt x 456.95718pt>
+<./images/method/unfiltered.png, id=117, 557.83406pt x 456.95718pt>
 File: ./images/method/unfiltered.png Graphic file (type png)
 
 <use ./images/method/unfiltered.png>
 Package pdftex.def Info: ./images/method/unfiltered.png used on input line 22.
 (pdftex.def)             Requested size: 208.04959pt x 170.42418pt.
 
-<./images/method/filtered.png, id=107, 534.49687pt x 455.45157pt>
+<./images/method/filtered.png, id=118, 534.49687pt x 455.45157pt>
 File: ./images/method/filtered.png Graphic file (type png)
 
 <use ./images/method/filtered.png>
 Package pdftex.def Info: ./images/method/filtered.png used on input line 28.
 (pdftex.def)             Requested size: 208.04959pt x 177.28487pt.
- [4 <./images/method/unfiltered.png (PNG copy)> <./images/method/filtered.png (
-PNG copy)>]
-<./images/method/trimmed.png, id=125, 1238.37656pt x 127.22531pt>
+ [4 <./images/dataset/chinese_example_noise.png (PNG copy)> <./images/dataset/c
+hinese_example_whole_noise.png>]
+<./images/method/trimmed.png, id=137, 1238.37656pt x 127.22531pt>
 File: ./images/method/trimmed.png Graphic file (type png)
 
 <use ./images/method/trimmed.png>
 Package pdftex.def Info: ./images/method/trimmed.png used on input line 54.
 (pdftex.def)             Requested size: 424.58624pt x 43.62099pt.
- [5 <./images/method/trimmed.png (PNG copy)>]) (./sections/experiment.tex
-<./images/experiment/intersection.png, id=144, 335.2525pt x 335.2525pt>
+ [5 <./images/method/unfiltered.png (PNG copy)> <./images/method/filtered.png (
+PNG copy)> <./images/method/trimmed.png (PNG copy)>] [6]) (./sections/experimen
+t.tex
+<./images/experiment/intersection.png, id=160, 335.2525pt x 335.2525pt>
 File: ./images/experiment/intersection.png Graphic file (type png)
 
 <use ./images/experiment/intersection.png>
@@ -1540,68 +1514,180 @@ Package pdftex.def Info: ./images/experiment/intersection.png used on input lin
 e 15.
 (pdftex.def)             Requested size: 106.14656pt x 106.14223pt.
 
-<./images/experiment/union.png, id=146, 335.2525pt x 335.2525pt>
+<./images/experiment/union.png, id=162, 335.2525pt x 335.2525pt>
 File: ./images/experiment/union.png Graphic file (type png)
 
 <use ./images/experiment/union.png>
 Package pdftex.def Info: ./images/experiment/union.png used on input line 21.
 (pdftex.def)             Requested size: 106.14656pt x 106.14223pt.
- [6]
-<./images/experiment/label.png, id=158, 38.39343pt x 54.2025pt>
+
+<./images/experiment/label.png, id=165, 38.39343pt x 54.2025pt>
 File: ./images/experiment/label.png Graphic file (type png)
 
 <use ./images/experiment/label.png>
 Package pdftex.def Info: ./images/experiment/label.png used on input line 37.
 (pdftex.def)             Requested size: 71.3318pt x 100.71056pt.
 
-<./images/experiment/found.png, id=159, 30.86531pt x 42.1575pt>
+<./images/experiment/found.png, id=166, 30.86531pt x 42.1575pt>
 File: ./images/experiment/found.png Graphic file (type png)
 
 <use ./images/experiment/found.png>
 Package pdftex.def Info: ./images/experiment/found.png used on input line 43.
 (pdftex.def)             Requested size: 71.3318pt x 97.44711pt.
 
-<./images/experiment/and.png, id=160, 31.61812pt x 42.1575pt>
+<./images/experiment/and.png, id=167, 31.61812pt x 42.1575pt>
 File: ./images/experiment/and.png Graphic file (type png)
 
 <use ./images/experiment/and.png>
 Package pdftex.def Info: ./images/experiment/and.png used on input line 49.
 (pdftex.def)             Requested size: 71.3318pt x 95.1114pt.
 
-<./images/experiment/or.png, id=161, 38.39343pt x 54.2025pt>
+<./images/experiment/or.png, id=168, 38.39343pt x 54.2025pt>
 File: ./images/experiment/or.png Graphic file (type png)
 
 <use ./images/experiment/or.png>
 Package pdftex.def Info: ./images/experiment/or.png used on input line 55.
 (pdftex.def)             Requested size: 71.3318pt x 100.71056pt.
-) (./sections/results.tex)
-(./sections/discussion.tex) (./sections/conclusion.tex) (./hr-paper.bbl
-[7 <./images/experiment/intersection.png> <./images/experiment/union.png> <./im
-ages/experiment/label.png (PNG copy)> <./images/experiment/found.png (PNG copy)
-> <./images/experiment/and.png (PNG copy)> <./images/experiment/or.png (PNG cop
-y)>]) [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 42.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 42.
+ [7 <./images/experiment/intersection.png> <./images/experiment/union.png>]) (.
+/sections/results.tex [8 <./images/experiment/label.png (PNG copy)> <./images/e
+xperiment/found.png (PNG copy)> <./images/experiment/and.png (PNG copy)> <./ima
+ges/experiment/or.png (PNG copy)>]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 11.
+See the caption package documentation for explanation.
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 9--22
+[]$[]$ 
+ []
+
+<./images/results/2-comps-merged.png, id=190, 111.41624pt x 97.36375pt>
+File: ./images/results/2-comps-merged.png Graphic file (type png)
+
+<use ./images/results/2-comps-merged.png>
+Package pdftex.def Info: ./images/results/2-comps-merged.png used on input line
+ 30.
+(pdftex.def)             Requested size: 104.0248pt x 90.90536pt.
+
+<./images/results/2-comps-merged-o.png, id=191, 315.1775pt x 146.5475pt>
+File: ./images/results/2-comps-merged-o.png Graphic file (type png)
+
+<use ./images/results/2-comps-merged-o.png>
+Package pdftex.def Info: ./images/results/2-comps-merged-o.png used on input li
+ne 36.
+(pdftex.def)             Requested size: 104.0248pt x 48.36752pt.
+
+<./images/results/small-whitespace.png, id=192, 27.10126pt x 97.36375pt>
+File: ./images/results/small-whitespace.png Graphic file (type png)
+
+<use ./images/results/small-whitespace.png>
+Package pdftex.def Info: ./images/results/small-whitespace.png used on input li
+ne 51.
+(pdftex.def)             Requested size: 10.4031pt x 37.37447pt.
+
+<./images/results/small-whitespace-o.png, id=193, 254.9525pt x 174.6525pt>
+File: ./images/results/small-whitespace-o.png Graphic file (type png)
+
+<use ./images/results/small-whitespace-o.png>
+Package pdftex.def Info: ./images/results/small-whitespace-o.png used on input 
+line 57.
+(pdftex.def)             Requested size: 104.0248pt x 71.26154pt.
+
+<./images/results/2inone.png, id=194, 148.555pt x 107.40125pt>
+File: ./images/results/2inone.png Graphic file (type png)
+
+<use ./images/results/2inone.png>
+Package pdftex.def Info: ./images/results/2inone.png used on input line 69.
+(pdftex.def)             Requested size: 106.14656pt x 76.74377pt.
+ [9 <./images/results/2-comps-merged.png (PNG copy)> <./images/results/2-comps-
+merged-o.png (PNG copy)> <./images/results/small-whitespace.png (PNG copy)> <./
+images/results/small-whitespace-o.png (PNG copy)> <./images/results/2inone.png 
+(PNG copy)>]
+<./images/results/3-lines.png, id=203, 9.03375pt x 138.5175pt>
+File: ./images/results/3-lines.png Graphic file (type png)
+
+<use ./images/results/3-lines.png>
+Package pdftex.def Info: ./images/results/3-lines.png used on input line 82.
+(pdftex.def)             Requested size: 2.07935pt x 31.88159pt.
+
+<./images/results/3-lines-o.png, id=204, 321.2pt x 118.4425pt>
+File: ./images/results/3-lines-o.png Graphic file (type png)
+
+<use ./images/results/3-lines-o.png>
+Package pdftex.def Info: ./images/results/3-lines-o.png used on input line 88.
+(pdftex.def)             Requested size: 104.0248pt x 38.3578pt.
+
+<./images/results/15-1.png, id=205, 105.39375pt x 111.41624pt>
+File: ./images/results/15-1.png Graphic file (type png)
+
+<use ./images/results/15-1.png>
+Package pdftex.def Info: ./images/results/15-1.png used on input line 102.
+(pdftex.def)             Requested size: 62.41551pt x 65.98322pt.
+
+<./images/results/15-2.png, id=206, 46.1725pt x 111.41624pt>
+File: ./images/results/15-2.png Graphic file (type png)
+
+<use ./images/results/15-2.png>
+Package pdftex.def Info: ./images/results/15-2.png used on input line 108.
+(pdftex.def)             Requested size: 62.41551pt x 150.61284pt.
+
+<./images/results/15-o.png, id=207, 313.17pt x 132.495pt>
+File: ./images/results/15-o.png Graphic file (type png)
+
+<use ./images/results/15-o.png>
+Package pdftex.def Info: ./images/results/15-o.png used on input line 114.
+(pdftex.def)             Requested size: 254.75433pt x 107.78331pt.
+ [10 <./images/results/3-lines.png (PNG copy)> <./images/results/3-lines-o.png 
+(PNG copy)> <./images/results/15-1.png (PNG copy)> <./images/results/15-2.png (
+PNG copy)> <./images/results/15-o.png (PNG copy)>] <./images/results/big-line.p
+ng, id=214, 578.16pt x 156.585pt>
+File: ./images/results/big-line.png Graphic file (type png)
+
+<use ./images/results/big-line.png>
+Package pdftex.def Info: ./images/results/big-line.png used on input line 128.
+(pdftex.def)             Requested size: 339.67029pt x 91.9925pt.
+
+<./images/results/noise-ball.png, id=215, 13.04875pt x 106.3975pt>
+File: ./images/results/noise-ball.png Graphic file (type png)
+
+<use ./images/results/noise-ball.png>
+Package pdftex.def Info: ./images/results/noise-ball.png used on input line 142
+.
+(pdftex.def)             Requested size: 10.4031pt x 84.83075pt.
+
+<./images/results/blackbar.png, id=216, 30.1125pt x 139.52126pt>
+File: ./images/results/blackbar.png Graphic file (type png)
+
+<use ./images/results/blackbar.png>
+Package pdftex.def Info: ./images/results/blackbar.png used on input line 148.
+(pdftex.def)             Requested size: 10.4031pt x 48.20087pt.
+) (./sections/discussion.tex [11 <./images/results/big-line.png (PNG copy)> <./
+images/results/noise-ball.png (PNG copy)> <./images/results/blackbar.png (PNG c
+opy)>]) (./sections/conclusion.tex)
+(./hr-paper.bbl [12]) [13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 51.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 51.
  (./hr-paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 42.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 42.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 51.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 51.
 Package rerunfilecheck Info: File `hr-paper.out' has not changed.
 (rerunfilecheck)             Checksum: C2CCEBCF1797A18F0CC2904C2AAF7181;592.
  ) 
 Here is how much of TeX's memory you used:
- 30210 strings out of 494953
- 569196 string characters out of 6180978
- 643379 words of memory out of 5000000
- 32982 multiletter control sequences out of 15000+600000
+ 30267 strings out of 494953
+ 570780 string characters out of 6180978
+ 638379 words of memory out of 5000000
+ 33022 multiletter control sequences out of 15000+600000
  12956 words of font info for 32 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 69i,10n,80p,10394b,714s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,10n,77p,10394b,580s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/jelle/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/j
 elle/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/jelle/.texmf
--var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/jelle/.texmf-var/fonts/
-pk/ljfour/jknappen/ec/ecbx0900.600pk> </home/jelle/.texmf-var/fonts/pk/ljfour/j
+-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/jelle/.texmf-var/fonts/
+pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/jelle/.texmf-var/fonts/pk/ljfour/j
 knappen/ec/ecbx1000.600pk> </home/jelle/.texmf-var/fonts/pk/ljfour/jknappen/ec/
-ecrm1000.600pk> </home/jelle/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.60
+ecrm0900.600pk> </home/jelle/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0900.60
 0pk> </home/jelle/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home
 /jelle/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
@@ -1611,10 +1697,10 @@ type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy7.pfb>
-Output written on hr-paper.pdf (8 pages, 525087 bytes).
+Output written on hr-paper.pdf (13 pages, 598135 bytes).
 PDF statistics:
- 505 PDF objects out of 1000 (max. 8388607)
- 203 compressed objects within 3 object streams
- 45 named destinations out of 1000 (max. 500000)
- 196 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 647 PDF objects out of 1000 (max. 8388607)
+ 261 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 261 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{knn}
 N.~S. Altman.
@@ -12,11 +12,55 @@ Abraham Bookstein.
   hart.
 \newblock {\em The Library Quarterly}, 44(3):258--259, 1974.
 
+\bibitem{Chen2015}
+Chongmu Chen, Da-Han Wang, and Hanzi Wang.
+\newblock {\em Scene Character and Text Recognition: The State-of-the-Art},
+  pages 310--320.
+\newblock Springer International Publishing, Cham, 2015.
+
+\bibitem{Chen1999}
+Jiun-Lin Chen, Chi-Hong Wu, and Hsi-Jian Lee.
+\newblock {\em Chinese Handwritten Character Segmentation in Form Documents},
+  pages 348--362.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 1999.
+
+\bibitem{license-sota}
+Shan Du, Mahmoud Ibrahim, Mohamed~S. Shehata, and Wael~M. Badawy.
+\newblock Automatic license plate recognition (alpr): A state-of-the-art
+  review.
+\newblock {\em IEEE Trans. Circuits Syst. Video Techn.}, 23(2):311--325, 2013.
+
+\bibitem{sign}
+M.~Y. Fu and Y.~S. Huang.
+\newblock A survey of traffic sign recognition.
+\newblock In {\em 2010 International Conference on Wavelet Analysis and Pattern
+  Recognition}, pages 119--124, July 2010.
+
+\bibitem{recogn}
+J.~M. Guo and Y.~F. Liu.
+\newblock License plate localization and character segmentation with feedback
+  self-learning and hybrid binarization techniques.
+\newblock {\em IEEE Transactions on Vehicular Technology}, 57(3):1417--1424,
+  May 2008.
+
+\bibitem{Jaeger2003}
+S.~Jaeger, C.-L. Liu, and M.~Nakagawa.
+\newblock The state of the art in japanese online handwriting recognition
+  compared to techniques in western handwriting recognition.
+\newblock {\em Document Analysis and Recognition}, 6(2):75--88, Oct 2003.
+
 \bibitem{lecun}
 Y.~LeCun, L.~Bottou, Y.~Bengio, and P.~Haffner.
 \newblock Gradient-based learning applied to document recognition.
 \newblock In {\em Intelligent Signal Processing}, pages 306--351. IEEE Press,
   2001.
+
+\bibitem{skelet}
+Nikos Nikolaou, Michael Makridis, Basilis Gatos, Nikolaos Stamatopoulos, and
+  Nikos Papamarkos.
+\newblock Segmentation of historical machine-printed documents using adaptive
+  run length smoothing and skeleton segmentation paths.
+\newblock {\em Image and Vision Computing}, 28(4):590 -- 604, 2010.
 
 \bibitem{otsu}
 N.~Otsu.
