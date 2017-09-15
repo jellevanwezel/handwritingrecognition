@@ -1,5 +1,5 @@
 function [ ratio ] = bw_ratio( I )
-invI = abs(I - 1);
-ratio = sum(sum(I(I==1))) / sum(sum(invI(invI==1)));
+total = size(I,1) * size(I,2);
+ratio = total / sum(sum(I(I==1)));
 end
 

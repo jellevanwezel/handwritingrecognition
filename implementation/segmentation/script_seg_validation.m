@@ -57,11 +57,9 @@ for i = 3:size(dirContents,1)
             fw = str2num(foundCords.w);
             fh = str2num(foundCords.h);
             
-            if(fy < 0)
-                
+            if fy < 0
                 fh = fh + fy;
                 fy = 0;
-                
             end
             
              labelRect = [lx,ly,lw,lh];

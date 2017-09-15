@@ -7,10 +7,23 @@ mkdir(outputPath);
 %include paths
 
 dataSet = dir(datasetPath);
-features = [];
-names = {};
+disp('Indexing Chars');
+nChars = 0;
+for lineIdx = 3:size(dataSet,1)
+    lineFolderName = dataSet(lineIdx).name;
+    lineFolderPath = [datasetPath,'/',lineFolderName];
+    nChars = nChars + size(dir(lineFolderPath),1) - 2;
+end
 
-for lineIdx = 3:10%size(dirContents,1)
+disp([num2str(nChars), ' found']);
+disp('Extracting features');
+features = nan(nChars,22);
+names = cell(nChars,1);
+
+prevP = 0;
+charNumber = 0;
+
+for lineIdx = 3:size(dataSet,1)
     
     lineFolderName = dataSet(lineIdx).name;
     lineFolderPath = [datasetPath,'/',lineFolderName];
@@ -24,9 +37,20 @@ for lineIdx = 3:10%size(dirContents,1)
         
         I = imread(charPath);
         I = I /max(I(:));
-        features = [features ; extract_features(I,'sobel')]; 
+        if size(I,1) <= 1 || size(I,2) <=1
+            continue;
+        end
+        
+        charNumber = charNumber + 1;
+        
+        if floor(charNumber / nChars * 100) > prevP
+            prevP = floor(charNumber/nChars * 100);
+            disp([num2str(prevP), ' %']);
+        end
+        
+        features(charNumber,:) = extract_features(I,'sobel'); 
         % todo, find the size of the dataset
-        names = [names;{[lineFolderName,'_FILE_',charFileName(1:end-4)]}];
+        names{charNumber} = [lineFolderName,'_FILE_',charFileName(1:end-4)];
     end
 end
 
