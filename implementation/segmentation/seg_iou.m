@@ -34,13 +34,13 @@ intSecArea = sum(intsec(:));
 unionArea = sum(canvasA(:)) + sum(canvasB(:)) - intSecArea;
 iou = intSecArea/unionArea;
 
-if(iou > 0.7)
-
-    figure;
-    imshow(imcomplement(or(canvasA,canvasB)));
-    
-    waitforbuttonpress;
-end
+% if(iou > 0.7)
+% 
+%     figure;
+%     imshow(imcomplement(or(canvasA,canvasB)));
+%     
+%     waitforbuttonpress;
+% end
 
 end
 

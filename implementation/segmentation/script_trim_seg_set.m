@@ -1,14 +1,14 @@
 clear;
-segDir = '../../dataset/Train_segmented_run_3/';
-outputDir = '../../dataset/trimmedTest/';
+segDir = '/home/jelle/RUG/HR/dataset/Train_segmented_run_4/';
+outputDir = '/home/jelle/RUG/HR/dataset/Train_segmented_run_4t/';
 
 mkdir(outputDir);
 
 dirContents = dir(segDir);
-for i = 5040:size(dirContents,1)
+for i = 1:size(dirContents,1)
     
     if(mod(i,60) == 0)
-        disp(i/60);
+        disp([num2str(i/60),' %']);
     end
     
     folderName = dirContents(i).name;
@@ -51,6 +51,8 @@ for i = 5040:size(dirContents,1)
             end
         end
         
+        
+        
         expression = '.*-x=(?<x>[-+]?\d+)-y=(?<y>[-+]?\d+)-w=(?<w>[-+]?\d+)-h=(?<h>[-+]?\d+).*';
         cords = regexp(fileName,expression,'names');
         
@@ -59,9 +61,9 @@ for i = 5040:size(dirContents,1)
         w = str2num(cords.w);
         h = str2num(cords.h);
         
-        
         y = y + trimTop;
         h = h - (trimTop + trimBot);
+        A = A(trimTop + 1:end-trimBot,:);
         
         newCordsName = strcat(num2str(j),'-x=',num2str(x),'-y=',num2str(y),'-w=',num2str(w),'-h=',num2str(h));
         

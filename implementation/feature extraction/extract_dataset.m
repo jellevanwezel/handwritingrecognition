@@ -1,6 +1,6 @@
 clear;
 
-datasetPath = '/home/jelle/RUG/HR/dataset/Train_segmented_run_4/';
+datasetPath = '/home/jelle/RUG/HR/dataset/Train_segmented_run_4t/';
 outputPath = '/home/jelle/RUG/HR/dataset/features/';
 mkdir(outputPath);
 

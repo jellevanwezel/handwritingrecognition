@@ -4,7 +4,9 @@
 
 This section will show what methods where used to segment the dataset. It will do so in a chronological order based on the example image shown in section \ref{sec:dataset} in figure \ref{fig:dataset:chinese:example}.
 
-\subsection{Rotation and binarization}
+\subsection{Segmentation}
+
+\subsubsection{Rotation and binarization}
 
 
 As discussed in the introduction (\ref{sec:introduction}) the Chinese characters were supplied in greyscale strokes of characters in the western orientation (from left to right).
@@ -13,7 +15,7 @@ In order to segment the characters from an image a combination of methods were u
 
 After binarization the image is rotated. This is done because most images in the dataset are titled slightly. As discussed in the dataset section (\ref{sec:dataset}) This is probably due to some variations in the orientation of the paper during the scanning process. Rotation is done by resizing the image in the vertical direction to half its size. The idea behind this is that the characters will be squeezed together and form a horizontal line, this line can then be used to find the optimal rotation. This is done by taking the horizontal densities. The maximum densities are saved for the different rotations (between $+1\degree$ and $-1\degree$). The rotation with the largest maximum density is where the line is likely to be the most horizontal. This is taken as the optimal rotation. The image is rotated with this optimal angle.
 
-\subsection{Vertical location}
+\subsubsection{Vertical location}
 
 \begin{figure}[ht]
   \centering
@@ -56,7 +58,7 @@ In order to find the location of the characters, the global maximum of changes i
   \label{fig:method:vertical:cropped}
 \end{figure}
 
-\subsection{Connected components}
+\subsubsection{Connected components}
 
 We are left with the row of characters. An example is shown in figure \ref{fig:method:vertical:cropped}. This image is rotated and cropped from figure \ref{fig:dataset:chinese:example}. In order to find the characters in this row the connected components are taken. These are taken with the method described by Sedgewick (\cite{Sedgewick}). Sedgewick's method will give us a list of all the connected components in the image. If multiple components are above each other we assume that these components are part of the same character. These components are merged. Some components are not directly on top of each-other. It is determent how much the components overlap vertically. If the overlapping width is larger or the same as $0.4$ times the width of the smaller of the two components, they are merged. This is done to make sure the components are on top of each other and not some small part of one component is on top of an other component.
 
@@ -83,7 +85,7 @@ The small components that are left in the list are now merged with the smallest 
 After merging all small components are dealt with. The component list still contains big out-liers. Some might even been created during merging. These components are spitted by projecting the variations in white pixels to black pixels (or the amount of fluctuations in white pixels). Where there are less variations there is more white space. The characters are split on where the fluctuations of the whitespace is minimal. After splitting the components are reevaluated on width. If a component is determined big it is split again. This is done until the component is not big anymore.
 
 
-\subsection{Finding the character box}
+\subsubsection{Finding the character box}
 
 With the split big components the segmentation part is completed. In order to validate the segmented images the location of the characters need to be determined in the original image. Because the image is rotated before segmentation the locations of the segmented images need to be rotated to point to the correct location in the original image. The location of the segmented characters is given by taking the $x$,$y$,$width$ and $height$ variables. This creates a rectangle on the original image where a character is determined to be. But because the characters outputted by the segmentation system are (merged) connected components there might be parts of other characters present in the rectangle that are not present in the character outputted by the segmentation system.
 
@@ -110,4 +112,27 @@ The height is calculated in a similar fashion:
 \end{equation}
 
 These equations give the $x$,$y$,$width$ and $height$ variables needed to reconstruct the rectangle. After approximating the rectangle the characters are saved for use in the feature extractor and later the classifier of the character segmentation system.
+
+\subsection{Feature Extraction}
+
+%simple feature extraction
+
+% windowing
+
+%sobel edge detection
+%prewit
+
+
+
+\subsection{Classification}
+
+%knn
+
+%mahalanobis?
+
+%glvq ?
+%gmlvq ?
+%rgmlvq ?
+%lgmlvq ?
+
 % section method (end
