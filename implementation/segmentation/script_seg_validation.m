@@ -65,7 +65,8 @@ for i = 3:size(dirContents,1)
         localScores = zeros(1,11);
 
         %find all names of the segmented files
-        dirSegContents = dir([segDir,xmlFileName(1:end-4)]);
+        folderLineName = [segDir,xmlFileName(1:end-4),'/'];
+        dirSegContents = dir(folderLineName);
         for j = 3:size(dirSegContents,1)
             segmentedFileName = dirSegContents(j).name;
             
@@ -92,7 +93,7 @@ for i = 3:size(dirContents,1)
             
             labelRect = [lx,ly,lw,lh];
             foundRect = [fx,fy,fw,fh];
-             
+            
              
             iou = seg_iou(labelRect,foundRect,orgImg);
             
@@ -103,7 +104,7 @@ for i = 3:size(dirContents,1)
             end
             
             if score >= 6
-                labeledSet = [labeledSet;{{'segmentedFileName'},{label}}];
+                labeledSet = [labeledSet;{{[folderLineName,segmentedFileName]},{label}}];
             end
             
         end

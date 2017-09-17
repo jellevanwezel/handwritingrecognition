@@ -18,3 +18,5 @@ octave-workspace
 
 # Dont push the dataset
 dataset/
+
+data/
