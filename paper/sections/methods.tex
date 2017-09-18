@@ -117,10 +117,16 @@ These equations give the $x$,$y$,$width$ and $height$ variables needed to recons
 
 %simple feature extraction
 
-% windowing
+Because the focus of this system lies on the segmentation and the classification a simple feature extractor was designed. The feature extractor uses boxing and edge detection to construct 22 features.
 
-%sobel edge detection
-%prewit
+Each character images is divided into four boxes. (inspired by ... paper) Per box the edges in four directions are calculated with a Sobel or a Prewit filter.
+
+%show the sobel and Prewit matrices here!!!
+
+
+The filtered images are binary images with the edges in a particular direction. The percentage of black pixels in the box is calculated and taken as a feature. Per box the percentage of black pixels is taken without filtering. This leads to five features per box in four boxes. Eventually the height and the with of the image is taken as the final features.
+
+% show the process? in one direction?
 
 
 
