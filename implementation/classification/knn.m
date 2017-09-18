@@ -1,6 +1,6 @@
-function [ label ] = knn(k, x, data, labels )
-
-distances = sqrt(sum((data - repmat(x,size(data,1),1)).^2,2)) ;
+function [ label ] = knn(k, x, data, labels, distM)
+distFunc = str2func(distM);
+distances = distFunc(x,data) ;
 
 sorted = sortrows([distances,labels],1);
 label = mode(sorted(1:k,end),1);

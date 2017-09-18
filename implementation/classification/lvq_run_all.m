@@ -1,3 +1,5 @@
+%Improvised LVQ script
+
 clear;
 dataSets = {'seg_run4t'};
 dataPath = '/home/jelle/RUG/HR/data/';

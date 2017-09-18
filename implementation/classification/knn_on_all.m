@@ -1,11 +1,20 @@
+%Improvised knn script
+%This is leave one out.
+%Follow the instructions in the code
+
+
 clear;
 load('/home/jelle/RUG/HR/dataset/labeled/sobel.mat');
 
-errorRates = nan(20,1);
-errorRates(1:6,1) = [0.827533009664685;0.725214392667544;0.672035936294750;0.638368347021190;0.630836244838695;0.627115567856981];
-features = normc(features);
+%distanceMeasure = 'Euclidian';
+distanceMeasure = 'Mahalanobis';
 
-for k = 7:20
+
+hitRates = nan(20,1);
+% features = normc(features); %dont do this for Mahalanobis normalizing for
+% Mahalanobis is bs
+
+for k = 1:2 %k = 1 is heighes run for till k=20
     
     hit = 0;
     
@@ -22,7 +31,7 @@ for k = 7:20
         label = labels(i);
         x = features(i,:);
         
-        foundLabel = knn(k,x,tempFeatures,tempLabels);
+        foundLabel = knn(k,x,tempFeatures,tempLabels,distanceMeasure);
         
         if foundLabel == label
             hit = hit + 1;
@@ -34,5 +43,5 @@ for k = 7:20
             disp(['pass:', num2str(k),' - ', num2str(prevP), '%']);
         end
     end
-    errorRates(k) = hit/length(features);
+    hitRates(k) = hit/length(features);
 end
