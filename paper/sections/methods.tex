@@ -117,10 +117,16 @@ These equations give the $x$,$y$,$width$ and $height$ variables needed to recons
 
 %simple feature extraction
 
-% windowing
+Because the focus of this system lies on the segmentation and the classification a simple feature extractor was designed. The feature extractor uses boxing and edge detection to construct 22 features.
 
-%sobel edge detection
-%prewit
+Each character image is divided into four boxes. (inspired by ... paper) Per box the edges in four directions are calculated with a Sobel or a Prewit filter.
+
+%show the sobel and Prewit matrices here!!!
+
+
+The filtered images are binary images with the edges in a particular direction. The percentage of black pixels in the box is calculated and taken as a feature. Per box the percentage of black pixels is taken without filtering. This leads to five features per box in four boxes. Eventually the height and the with of the image is taken as the final features.
+
+% show the process? in one direction?
 
 
 
@@ -128,11 +134,108 @@ These equations give the $x$,$y$,$width$ and $height$ variables needed to recons
 
 %knn
 
+\subsubsection{KNN}
+As a base line of classification the KNN algorithm is used due to its simplicity. KNN stands for K Nearest Neighbor. Here is K the variable that determents the number of closest data-points in the whole dataset to the data-point that is to be classified. The labels of K data-points are known and at classification the majority of the same labels are taken as the winner. If there is a Tie, it is broken by taking a random winner. The winning label is then assigned to the to be classified data-point since most of its nearest neighbors have this same label.
+
+The distance measure impacts the KNN algorithm. Therefore two commonly used distance measures were used:
+
+\begin{equation}
+D_{Euclidian}(\vec{x},\vec{y}) = \sqrt{\sum^n_{i=1}[(x_i-y_i)'\Sigma^{-1}(x_i-y_i)]} 
+\end{equation}
+
+\begin{equation}
+D_{Mahalanobis}(\vec{x},\vec{y}) = \sqrt{\sum^n_{i=1}(x_i-y_i)^2} 
+\end{equation}
+
+% mahalanobs
+% euclidian
+
 %mahalanobis?
 
-%glvq ?
-%gmlvq ?
-%rgmlvq ?
-%lgmlvq ?
+\subsubsection{LVQ}
+
+Learning Vector Quantization commonly know as LVQ started out as a prototype based heuristic. It was deviced by Kohonen (REF).
+%ref kohonen
+
+%T. Kohonen (1995), "Learning vector quantization", in M.A. Arbib, The Handbook of Brain Theory and Neural Networks, Cambridge, MA: MIT Press, pp. 537–540
+
+Lvq was invented in the '90s by Kohonen. It is a prototype-based supervised classification algorithm. It uses a winner takes it all - supervised Hebbian learning based approach. LVQ is defined by its prototypes often denoted as $W = (w(i) , ..., w(n))$. These prototypes are defined in the feature space of the dataset. Each epoch the algorithm iterates the dataset and for each data-point it determines the closest prototype. The prototype has a label just like the data-point. If the label of the prototype is the same as the label of the data-point, the prototype is updated by moving it in the direction of the data-point. If the labels differ, the prototype is moved away from the data-point. There are many variations on the original LVQ heuristic, four of which are used by our system.
+
+\subsubsection{GLVQ}
+%ref Sato?
+%based on lvq 2.1?
+
+Sato introduced an energy function $S$ in his paper: refref. He shows that this generalized version of LVQ always converges.
+
+He defines a relative distance difference function $\mu(\vec{x})$:
+\begin{flalign}
+\mu(\vec{x}) = \frac{d_1-d_2}{d_1+d_2}
+\end{flalign}
+
+
+Then the energy function is defined as:
+\begin{flalign}
+S = \sum_{i=1}^{N} f(\mu(\vec{x}_i))
+\end{flalign}
+Where $f(\mu)$ is a monotonically increasing function.
+
+Now the update rules for the two winning prototypes are $\vec{w}_i, i=1,2$ are: 
+\begin{flalign}
+\vec{w}_i \leftarrow \vec{w}_i - \alpha \frac{dS}{d\vec{w}_i}, i=1,2
+\end{flalign}
+
+\begin{flalign}
+\frac{dS}{d\vec{w}_1} = - \frac{df}{d\mu}\frac{4d_2}{(d_1+d_2)^2}(\vec{x}-\vec{w}_1)
+\end{flalign}
+
+\begin{flalign}
+\frac{dS}{d\vec{w}_2} = + \frac{df}{d\mu}\frac{4d_1}{(d_1+d_2)^2}(\vec{x}-\vec{w}_2)
+\end{flalign}
+
+\begin{flalign}
+\vec{w}_1 \leftarrow \vec{w}_1 + \alpha \frac{df}{d\mu}\frac{d_2}{(d_1+d_2)^2}(\vec{x}-\vec{w}_1)
+\end{flalign}
+
+\begin{flalign}
+\vec{w}_2 \leftarrow \vec{w}_2 - \alpha \frac{df}{d\mu}\frac{d_1}{(d_1+d_2)^2}(\vec{x}-\vec{w}_2)
+\end{flalign}
+
+In the experiments, Sato states $\frac{df}{d\mu} = f(\mu,t){1-f(\mu,t)}$ and for $f(\mu,t)$ the sigmoid function $\frac{1}{1+\epsilon^{-ut}}$. Here the peak of $\mu$ becomes narrower over time for $\mu \rightarrow 0$.
+
+
+
+\subsubsection{RGLVQ}
+
+RGLVQ is an addition by Hammer on GLVQ by Sato,
+
+Relevance LVQ uses a vector $\lambda$ with the relevances per feature in the dataset. These relevances are updated at each time-step as follows: 
+
+\begin{flalign}
+\vec{\lambda}_m =  \lambda_m - \epsilon(x_m^i - w_m^j)^2, if (y^i = c^j)
+\end{flalign}
+
+\begin{flalign}
+\vec{\lambda}_m =  \lambda_m + \epsilon(x_m^i - w_m^j)^2, otherwise
+\end{flalign}
+
+The relevance vector is then used to influence the distance measure:
+
+\begin{flalign}
+D = | \vec{\lambda} \vec{x}_i - \vec{\lambda} \vec{w}_j |
+\end{flalign}
+
+
+\subsubsection{GMLVQ}
+
+GMLVQ uses a matrix $\Omega$ to map the relevances and the combinations of relevances between features. This matrix updated with:
+
+\begin{flalign}
+\Delta \Omega_{lm} = - \epsilon \cdot 2 \cdot \vec{\Phi}' (\mu(\xi)) \cdot (\mu^+(\xi) ( (\xi_m - \omega_{J,m})[\Omega(\xi-\omega_J)]_l ) - \mu^-(\xi) \cdot ( (\xi_m-\omega_{K,m})[\Omega(\xi-\omega_K)]_l ) ) 
+\end{flalign}
+
+\subsubsection{LGMLVQ}
+%ref idk
+
+The Localized GMLVQ (LGMLVQ) works with a more complex model using local matrices either attached to each prototype or in a class-wise manner. This lead to non-linear decision boundaries instead of the piecewise linear ones in the global formulation. Note, that the computational effort increases dependent on the number of matrices and the dimension. 
 
 % section method (end

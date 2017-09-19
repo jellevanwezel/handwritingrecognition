@@ -2,7 +2,10 @@ clear;
 
 datasetPath = '/home/jelle/RUG/HR/dataset/Train_segmented_run_4t/';
 outputPath = '/home/jelle/RUG/HR/dataset/features/';
+labeledSet = '/home/jelle/RUG/HR/dataset/labeled/labeled.mat';
+
 mkdir(outputPath);
+load(labeledSet);
 
 %include paths
 
@@ -50,7 +53,7 @@ for lineIdx = 3:size(dataSet,1)
         
         features(charNumber,:) = extract_features(I,'sobel'); 
         % todo, find the size of the dataset
-        names{charNumber} = [lineFolderName,'_FILE_',charFileName(1:end-4)];
+        names{charNumber} = [lineFolderPath,'/',charFileName(1:end-4)];
     end
 end
 
