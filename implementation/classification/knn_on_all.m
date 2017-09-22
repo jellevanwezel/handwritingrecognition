@@ -6,13 +6,18 @@
 clear;
 load('/home/jelle/RUG/HR/dataset/labeled/sobel.mat');
 
-%distanceMeasure = 'Euclidian';
-distanceMeasure = 'Mahalanobis';
+%load('/home/jelle/RUG/HR/dataset/features/base_dataset.mat');
+%features = data;
+
+%distanceMeasure = 'euclidean';
+%distanceMeasure = 'mahalanobis';
+distanceMeasure = 'minkowski';
+
 maxK = 20;
 
 k = 1:maxK;
 
-% features = normc(features); %dont do this for Mahalanobis normalizing for
+%features = normc(features); %dont do this for Mahalanobis normalizing for
 % Mahalanobis is bs
     
 hits = zeros(maxK,1);

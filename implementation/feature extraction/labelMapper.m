@@ -6,8 +6,10 @@ labelCount = 1;
 
 for i = 1:length(labels)
     
-    labelCell = labels{i};
-    label = labelCell{1};
+    label = labels{i};
+    if iscell(label)
+        label = labelCell{1};
+    end
     
     if(isfield(labelMap,['l',label]))
         continue;
