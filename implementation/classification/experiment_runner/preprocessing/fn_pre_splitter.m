@@ -1,6 +1,6 @@
-function [ dataset ] = fn_pre_splitter( data, labels )
+function [ dataset ] = fn_pre_splitter( data, labels, TestRatio)
     ranIndices =  randperm(size(data,1))';
-    halfway =  size(data,1) - floor(size(data,1) / 10);
+    halfway =  size(data,1) - floor(size(data,1) * TestRatio);
     
     trainData = data(ranIndices(1:halfway),:);
     trainLabels = labels(ranIndices(1:halfway),:);

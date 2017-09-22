@@ -1,4 +1,4 @@
-function [ experiments ] = fn_exp_generator(funName, datasets, dataPath, preproc, runs, params)
+function [ experiments ] = fn_exp_generator(funName, datasets, dataPath, preproc, testRatio, runs, params)
 pCombs = fn_exp_paramCombs(params);
 
 combAmount = size(pCombs,1);
@@ -29,7 +29,7 @@ for datasetIdx = 1:size(datasets,2)
         experiment.dataSplits = cell(runs,1);
 
         for run = 1:runs
-            experiment.dataSplits{run} = fn_pre_splitter(preProsData, labels);
+            experiment.dataSplits{run} = fn_pre_splitter(preProsData, labels, testRatio);
         end
         
         if size(pCombs,1) == 0
