@@ -216,19 +216,19 @@ The filtered images are binary images with the edges in a particular direction. 
 
 %knn
 As a base line of classification the KNN algorithm is used due to its simplicity. KNN stands for K Nearest Neighbor. Here is K the variable that determents the number of closest data-points in the whole dataset to the data-point that is to be classified. The labels of K data-points are known and at classification the majority of the same labels are taken as the winner. If there is a Tie, it is broken by taking a random winner. The winning label is then assigned to the to be classified data-point since most of its nearest neighbors have this same label.
-\\
+\\\\
 \framebox[\width]{
 \begin{algorithm}[H]
  \KwData{k,x,data,labels}
  \KwResult{label}
  initialization\;
  1. Calculate the distances from x to each data-point in data\\
- 2. Sort the labels of the data-points ascending by distance\\
+ 2. Sort the labels of the data-points ascending by distance to x\\
  3. Take the mode of the top k labels from the sorted set\\ 
  \caption{The KNN algorithm}
 \end{algorithm}
 }
-\bigskip
+\\\\
 The distance measure impacts the KNN algorithm. Therefore multiple distance measures were used. The Mahalanobis measure uses the inverse of the covariance matrix of the dataset to determine the distance.
 
 \begin{equation}
@@ -249,6 +249,6 @@ D_{Cosine}(\vec{x},\vec{y})= 1 - \frac{\vec{x}\vec{y}'}{\sqrt{(xx')(yy')}}
 D_{Minkowski}(\vec{x},\vec{y}) = \sqrt[p]{\sum^n_{i=1}(\vec{x}_i-\vec{y}_i)^p}
 \end{equation}
 
-\noindent The Minkowski distance measure is a generalization of the euclidean (for $p=2$) and the city-block (for $p=1$) distance measures.
+\noindent The Minkowski distance measure is a generalization of the Euclidean (for $p=2$) and the Cityblock (for $p=1$) distance measures.
 
 % section method (end

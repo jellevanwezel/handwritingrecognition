@@ -3,8 +3,9 @@
 \section{Results} % (fold)
 \label{sec:results}
 
-This section will show the direct results of the intersection over union from the segmentation system. It will also show some cases where the segmentation seemed to have failed and where it succeeded.
+This section will show the direct results of the intersection over union from the segmentation system. It will also show the results from the classification with Knn and the feature extraction method.
 
+\subsection{Segmentation}
 
 \begin{minipage}{\linewidth}
 \flushleft
@@ -20,6 +21,9 @@ This section will show the direct results of the intersection over union from th
 The results from the segmented characters with the labeled data from the dataset.
 \end{minipage}
 
+\subsection{Classification}
+
+The best result is made bold for all experiments ran.
 
 \begin{minipage}{\linewidth}
 \flushleft
@@ -28,7 +32,7 @@ The results from the segmented characters with the labeled data from the dataset
 \textbf{K} & \textbf{Cityblock} & \textbf{Euclidean} & \textbf{Euclidean(norm)} & \textbf{Mahalanobis} & \textbf{Cosine} \\
 \hline
 \hline
-1  & 0.6887    & 0.6689    & 0.7219          & 0.7294      & 0.7234 \\
+1  & 0.6887    & 0.6689    & 0.7219          & \textbf{0.7294}      & 0.7234 \\
 2  & 0.5900    & 0.5660    & 0.6308          & 0.6517      & 0.6289 \\
 3  & 0.5517    & 0.5249    & 0.5984          & 0.6173      & 0.5964 \\
 4  & 0.5217    & 0.4953    & 0.5698          & 0.5926      & 0.5674 \\
@@ -60,7 +64,7 @@ The classification rates of the feature extracted characters from the labeled ba
 \textbf{K} & \textbf{Cityblock} & \textbf{Euclidean} & \textbf{Euclidean(norm)} & \textbf{Mahalanobis} & \textbf{Cosine} \\
 \hline
 \hline
-1          & 0.6509             & 0.7172             & 0.7219                   & \textbf{0.7432}       & 0.6241          \\
+1          & 0.6509             & 0.7172             & 0.7219                   & \textbf{0.7432}      & 0.6241          \\
 2          & 0.5410             & 0.6242             & 0.6308                   & 0.6647               & 0.5057          \\
 3          & 0.4996             & 0.5964             & 0.5984                   & 0.6349               & 0.4616          \\
 4          & 0.4649             & 0.5685             & 0.5698                   & 0.6146               & 0.4190          \\
@@ -94,7 +98,7 @@ The classification rates of the feature extracted characters from the labeled ba
 \textbf{K} & \textbf{Cityblock} & \textbf{Euclidean} & \textbf{Euclidean(norm)} & \textbf{Mahalanobis} & \textbf{Cosine} \\
 \hline
 \hline
-1  & 0.8054    & 0.8305    & 0.8275          & 0.8179      & 0.7940 \\
+1  & 0.8054    & \textbf{0.8305}    & 0.8275          & 0.8179      & 0.7940 \\
 2  & 0.6865    & 0.7267    & 0.7252          & 0.7149      & 0.6676 \\
 3  & 0.6274    & 0.6789    & 0.6720          & 0.6621      & 0.6091 \\
 4  & 0.5911    & 0.6438    & 0.6384          & 0.6322      & 0.5732 \\

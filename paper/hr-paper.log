@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.9.11)  26 SEP 2017 12:23
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2017.9.11)  26 SEP 2017 12:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1193,8 +1193,18 @@ File: ./images/method/filtered.png Graphic file (type QTm)
 File: ./images/method/trimmed.png Graphic file (type QTm)
 
 <use  "./images/method/trimmed.png" > [5] [6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 218--233
+
+ []
+
+
 Overfull \hbox (3.33252pt too wide) in paragraph at lines 218--233
-[]
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--233
+
  []
 
 ) (./sections/experiment.tex
@@ -1202,7 +1212,7 @@ File: ./images/experiment/intersection.png Graphic file (type QTm)
  <use  "./images/experiment/intersection.png" >
 File: ./images/experiment/union.png Graphic file (type QTm)
 
-<use  "./images/experiment/union.png" >
+<use  "./images/experiment/union.png" > [8]
 File: ./images/experiment/label.png Graphic file (type QTm)
 
 <use  "./images/experiment/label.png" >
@@ -1213,58 +1223,53 @@ File: ./images/experiment/and.png Graphic file (type QTm)
  <use  "./images/experiment/and.png" >
 File: ./images/experiment/or.png Graphic file (type QTm)
 
-<use  "./images/experiment/or.png" > [8]
+<use  "./images/experiment/or.png" >
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
 ine 71.
 ) (./sections/results.tex [9]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 11.
+(caption)                particular \caption on input line 12.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 9--22
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 30.
+See the caption package documentation for explanation.
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 28--59
 []$[]$ 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 26.
+(caption)                particular \caption on input line 62.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 24--55
-[]$[]$ 
- []
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 58.
-See the caption package documentation for explanation.
-
-
-Overfull \hbox (15.0pt too wide) in paragraph at lines 56--87
+Overfull \hbox (15.0pt too wide) in paragraph at lines 60--91
 []$[]$ 
  []
 
 [10]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 92.
+(caption)                particular \caption on input line 96.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 90--121
+Overfull \hbox (15.0pt too wide) in paragraph at lines 94--125
 []$[]$ 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 127.
+(caption)                particular \caption on input line 131.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 125--156
+Overfull \hbox (15.0pt too wide) in paragraph at lines 129--160
 []$[]$ 
  []
 
@@ -1341,10 +1346,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 33375 strings out of 495564
- 613289 string characters out of 6186598
+ 33376 strings out of 495564
+ 613300 string characters out of 6186598
  687701 words of memory out of 5000000
- 36153 multiletter control sequences out of 15000+600000
+ 36154 multiletter control sequences out of 15000+600000
  17345 words of font info for 48 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  69i,11n,77p,10394b,712s stack positions out of 5000i,500n,10000p,200000b,80000s
