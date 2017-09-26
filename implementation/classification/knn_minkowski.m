@@ -4,26 +4,20 @@
 
 
 clear;
-load('/home/jelle/RUG/HR/dataset/labeled/sobel.mat');
-%load('/home/jelle/RUG/HR/dataset/labeled/prewit.mat');
-%load('/home/jelle/RUG/HR/dataset/features/base_dataset_prewit.mat');
+%load('/home/jelle/RUG/HR/dataset/labeled/sobel.mat');
+load('/home/jelle/RUG/HR/dataset/labeled/prewit.mat');
 %load('/home/jelle/RUG/HR/dataset/features/base_dataset.mat');
 %features = data;
 
-%distanceMeasures = {'euclidean','mahalanobis','minkowski','cosine',};
-distanceMeasures = {'cosine'};
-
 
 maxK = 20;
-k = 1:maxK;
+ks = 1:maxK;
 
 %features = normc(features); %dont do this for Mahalanobis normalizing for
 % Mahalanobis is bs
 
 prevP = 0;
-for methodIdx = 1 : length(distanceMeasures)
-    distanceMeasure = distanceMeasures{methodIdx};
-    disp(distanceMeasure);
+for p = 3 : 22
     hits = zeros(maxK,1);
     for i = 1:length(features)
 
@@ -35,18 +29,25 @@ for methodIdx = 1 : length(distanceMeasures)
 
         label = labels(i);
         x = features(i,:);
-
-        foundLabels = knn(k,x,tempFeatures,tempLabels,distanceMeasure);
+        
+        distances = pdist2(tempFeatures,x,'minkowski',p);
+        sorted = sortrows([distances,tempLabels],1);
+        foundLabels = nan(size(ks,2),1);
+        for kIdx = 1:size(ks,2)
+            k = ks(1,kIdx);
+            foundLabels(kIdx) = mode(sorted(1:k,end),1);
+        end
+        
 
         hits = hits + (foundLabels == label);
 
 
-        nextP = floor((i + ((methodIdx - 1) * length(features)))  / (length(features) * length(distanceMeasures)) * 100);
+        nextP = floor(i / (length(features) * 20) * 100);
         if nextP > prevP
             prevP = nextP;
             disp([num2str(prevP), '%']);
         end
     end
     hitRates = hits/length(features);
-    save(['/home/jelle/RUG/HR/dataset/errorRates/knn_',distanceMeasure,'_sobel.mat'],'hitRates');
+    save(['/home/jelle/RUG/HR/dataset/errorRates/knn_MINKOWSKI_',num2str(p),'_prewit.mat'],'hitRates');
 end

@@ -65,10 +65,14 @@ In order to be able to say anything about the performance of the segmentation re
 
 \subsection{Feature Extraction}
 
-% Sobel
-% Prewit
-
+The feature extraction for the experiment was done in two variants: one dataset was generated with the Sobel filters and the other was generated with the use of the Prewit filters. This means that feature 21 (length) and 22 (width) are the same for both datasets. This was done one the segmented dataset created by the segmentation system and on the received labeled dataset.
 \subsection{Classification}
+
+Classification was done by taking the distance measure's discribed in the method section \todo{ref} and running the KNN algorithm with them. For the Minkowski measure, values from $p=1$ to $p=6$ were used. This experiment was run on the dataset normalized and non-normalized.
+
+For the KNN algorithm $K=1$ to $K=20$ was used. Also multiple runs were done for $K=1$ to $K=100$ with the euclidean distance in order to see if a `large' $K$ has an unexpected influence on the classification results.
+
+
 
 % knn
 %   -naive

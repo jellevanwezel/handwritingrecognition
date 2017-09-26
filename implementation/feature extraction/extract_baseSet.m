@@ -29,9 +29,9 @@ for i = 1:length(charSet)
         disp([num2str(prevP), ' %']);
     end
 
-    data(i,:) = extract_features(I,'sobel');
+    data(i,:) = extract_features(I,'prewit');
     labels(i,1) = getfield(labelMap,['l',labelSet{i}]);
 end
 
-save([outputPath,'base_dataset.mat'],'data','labels');
+save([outputPath,'base_dataset_prewit.mat'],'data','labels');
 

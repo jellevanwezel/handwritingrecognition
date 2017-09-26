@@ -8,7 +8,7 @@ for i = 1:length(labels)
     
     label = labels{i};
     if iscell(label)
-        label = labelCell{1};
+        label = label{1};
     end
     
     if(isfield(labelMap,['l',label]))
