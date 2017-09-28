@@ -11,13 +11,14 @@ load('/home/jelle/RUG/HR/dataset/labeled/sobel.mat');
 %features = data;
 
 %distanceMeasures = {'euclidean','mahalanobis','minkowski','cosine',};
-distanceMeasures = {'cosine'};
+distanceMeasures = {'euclidean'};
 
 
-maxK = 20;
+maxK = 1;
 k = 1:maxK;
 
 %features = normc(features); %dont do this for Mahalanobis normalizing for
+features = fn_pre_normalized_var( features );
 % Mahalanobis is bs
 
 prevP = 0;
@@ -48,5 +49,5 @@ for methodIdx = 1 : length(distanceMeasures)
         end
     end
     hitRates = hits/length(features);
-    save(['/home/jelle/RUG/HR/dataset/errorRates/knn_',distanceMeasure,'_sobel.mat'],'hitRates');
+    %save(['/home/jelle/RUG/HR/dataset/errorRates/knn_',distanceMeasure,'_base_sobel.mat'],'hitRates');
 end

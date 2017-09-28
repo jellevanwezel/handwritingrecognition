@@ -3,25 +3,29 @@
 \section{Discussion} % (fold)
 \label{sec:discussion}
 
-This section will discuss the results given in the results section \ref{sec:results}, both positive and negative results will be handled to give an inclusive image of the achieved segmentation.
+
+% vier manieren ->
+	% base sobel
+	% base prewit
+	% seg sobel
+	% seg prewit
+
+% different distance measures
+
+% somthing about the downward trend thing, idk
+% something about the set was run on 0.6 of the iou
+% something about why seg set was better than the labelled set
+% maybe something about the means of the classes and the variation between them
+% something about the feature extraction.
 
 
-In figure \ref{fig:results:2cm} two components are shown that have been succesfully merged together by the merging algorithm discussed in section \ref{sec:method}. The left most component in figure \ref{fig:results:2cm:s} seems to be a small components merged with the seemingly normal sized component to the right of it forming the shown character.
 
-Figure \ref{fig:results:sw} shows a small segmented character. In figure \ref{fig:results:sw:o} the location in the original dataset is shown. It stands out that the component is a character on its own and is handled properly by the segmentation system.
 
-The previous two characters where examples of where the segmentation method seemed to have handled correctly. Now we will discuss some examples where the system seems to make mistakes.
+% Do your results provide answers to your testable hypotheses? If so, how do you interpret your findings?
+% Do your findings agree with what others have shown? If not, do they suggest an alternative explanation or perhaps a unforseen design flaw in your experiment (or theirs?)
+% Given your conclusions, what is our new understanding of the problem you investigated and outlined in the Introduction?
+% If warranted, what would be the next step in your study, e.g., what experiments would you do next? 
 
-The first example is shown in figure \ref{fig:results:2i1}. Where two components seem to have been merged by the system where they seem to be two individual characters. This is probably due to the the combined with of these two characters not being long enough for the system to see them as such.
 
-The next example is a noise reduction problem. In figure \ref{fig:results:3l:s} the segmented character is shown and in figure \ref{fig:results:3l:o} the cropped original image is shown. It is clearly visable that there are two stripes missing. In this case the system classified the other stipes as noise and just removed them from the character list.
-
-In figure \ref{fig:results:15:s1} and figure \ref{fig:results:15:s2} two segmented characters are shown. When taking a look at figure \ref{fig:results:15:o} we can see that the two segmented characters were segmented wrongly to contain 1.5 character and 0.5 character. This is probably due to an error in the merging process. Possibly because the merging process does not take the whitespace between the components into account.
-
-In the three figures \ref{fig:results:bl} to \ref{fig:results:noise:bb} faulty segmentation due to noise is shown. in figure \ref{fig:results:bl} the black line above the characters merges the components together due to the vertical merging process. The splitting algorithm does not seem to split the image in this case and needs to be investigated.
-
-Figure \ref{fig:results:noise:nb} shows a black dot and is probably noise. However it is difficult to classify this kind of ball as such because its size is the same as a small character.
-
-The next example of noise is however better to deal with and is shown in figure \ref{fig:results:noise:bb}. This is the black bar discussed in section \ref{fig:dataset:noise}. The system tries to handle these cases as described in section \ref{sec:method} but the parameter used needs further tweaking. 
 
 % section discussion (end)
