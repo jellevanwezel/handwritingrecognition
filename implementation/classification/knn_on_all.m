@@ -14,7 +14,7 @@ load('/home/jelle/RUG/HR/dataset/labeled/sobel.mat');
 distanceMeasures = {'euclidean'};
 
 
-maxK = 1;
+maxK = 5;
 k = 1:maxK;
 
 %features = normc(features); %dont do this for Mahalanobis normalizing for

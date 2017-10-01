@@ -253,16 +253,44 @@ D_{Minkowski}(\vec{x},\vec{y}) = \sqrt[p]{\sum^n_{i=1}(\vec{x}_i-\vec{y}_i)^p}
 
 \noindent The Minkowski distance measure is a generalization of the Euclidean (for $p=2$) and the Cityblock (for $p=1$) distance measures.
 
-\subsubsection{Learning Vector quantization}
+\subsubsection{Learning Vector Quantization}
 
 
+Next to KNN multiple variants of Learning vector quantization was implemented. LVQ is an method that trains prototypes to represent a class or cluster. Then for classification a data-point is classified by determining the closest prototype. The training face of the LVQ algorithm as proposed by Kohonen is determines the closest prototype to a labeled data-point from the dataset. if the label of the data-point and the label of the prototype are the same, this prototype is moved towards the data-point in the feature space by a certain step-size. If the labels differ, the prototype is moved away from the data-point by the same amount. This is done until the amount of movement of all prototypes converges to zero.
+\\\\
+\framebox[\width]{
+\begin{algorithm}[H]
+ \KwData{prototypes, data,labels}
+ \KwResult{prototypes}
+ initialization\;
+ 1. Calculate the distances from the prototypes to each data-point in data\\
+ 2. Sort the labels of the data-points ascending by distance to x\\
+ 3. Take the mode of the top k labels from the sorted set\\ 
+ \caption{The training of the LVQ algorithm}
+\end{algorithm}
+}
+\\\\
 
-% 4 verschillende
+Multiple variants have been made on the LVQ algorithm.
 
-  %glvq
-  %grlvq
-  %gmlvq
-  %lgmlvq
+% generalisation of the algorithm (proof of convergence)
+
+The used LVQ methods were: Generalized LVQ, Relevance Generalized LVQ, Generalized Metric LVQ, and Local Generalized Metric LVQ.
+
+Generalized LVQ is the LVQ algorithm as proven to converge by (REFEREFER) \todo{ref} 
+
+Relevance LVQ uses a vector $\lambda$ to keep track and improve on the feature relevances at each iteration. The relevances are then used as weights on the features to make more relevant features more prominent. $\lambda$ is determined during training as follows:
+
+Generalized metric LVQ uses a matrix consisting of the  
+
+Local generalized metric LVQ uses a matrix $\Omega$ per prototype.
+
+%rlvq
+%gmlvq
+%lgmlvq
+
+% normalization (naive,norm,norm_var)
+% 
 
 % section method (end
 
