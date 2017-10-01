@@ -256,41 +256,35 @@ D_{Minkowski}(\vec{x},\vec{y}) = \sqrt[p]{\sum^n_{i=1}(\vec{x}_i-\vec{y}_i)^p}
 \subsubsection{Learning Vector Quantization}
 
 
-Next to KNN multiple variants of Learning vector quantization was implemented. LVQ is an method that trains prototypes to represent a class or cluster. Then for classification a data-point is classified by determining the closest prototype. The training face of the LVQ algorithm as proposed by Kohonen is determines the closest prototype to a labeled data-point from the dataset. if the label of the data-point and the label of the prototype are the same, this prototype is moved towards the data-point in the feature space by a certain step-size. If the labels differ, the prototype is moved away from the data-point by the same amount. This is done until the amount of movement of all prototypes converges to zero.
+Next to KNN multiple variants of Learning vector quantization was implemented. LVQ is an method that trains prototypes to represent a class or cluster. Then for classification a data-point is classified by determining the closest prototype to that data-point. The training phase of the LVQ algorithm as proposed by Kohonen is determines the closest prototype to a labeled data-point from the dataset. If the label of the data-point and the label of the prototype are the same, this prototype is moved towards the data-point in the feature space by the learning rate. If the labels differ, the prototype is moved away from the data-point by the same amount. This is done until the amount of movement of all prototypes converges to zero or until a given maximum iterations is reached.
 \\\\
 \framebox[\width]{
 \begin{algorithm}[H]
- \KwData{prototypes, data,labels}
+ \KwData{prototypes, learningRate, data,labels}
  \KwResult{prototypes}
  initialization\;
- 1. Calculate the distances from the prototypes to each data-point in data\\
- 2. Sort the labels of the data-points ascending by distance to x\\
- 3. Take the mode of the top k labels from the sorted set\\ 
+ \While{prototypes have not converged}{
+   \ForAll{data-point $\in$ data}{
+      Determine the closest prototype to data-point.\\
+      \If {label data-point == label prototype}{
+        Move prototype towards data-point by learningRate.
+      }
+      \Else{
+        Move prototype away from data-point by learningRate.
+      }
+    }
+  }
  \caption{The training of the LVQ algorithm}
 \end{algorithm}
 }
 \\\\
+Multiple variants have been made on the LVQ algorithm. Sato showed in his paper (ref) \todo{ref} that a generalized version of LVQ 2.1 (ref) \todo{ref} always converges. LVQ 2.1 uses 2 nearest prototypes. One with the same label as the data-point and one with an other label as the data-point. The first prototype is pushed towards the data-point and the second is pushed away from the data-point.
 
-Multiple variants have been made on the LVQ algorithm.
+For the experiments Generalized Learning Vector Quantization (GLVQ) and three variations on GLVQ were used. The used GLVQ variations were: Relevance Generalized LVQ (RGLVQ), Generalized Metric LVQ (GMLVQ), and Local Generalized Metric LVQ (LGMLVQ).
 
-% generalisation of the algorithm (proof of convergence)
+Relevance LVQ uses a relevance vector $\lambda$ to keep track and improve on the feature relevances at each iteration. The relevances are then used as weights on the features to make more relevant features more prominent. Generalized metric LVQ uses a matrix $\Omega$  consisting of the relevances on the diagonal of the matrix and the combinations of the relevances on the off-diagonals of this matrix. Local generalized metric LVQ uses this matrix $\Omega$ per prototype giving the clusters their own relevance matrix.
 
-The used LVQ methods were: Generalized LVQ, Relevance Generalized LVQ, Generalized Metric LVQ, and Local Generalized Metric LVQ.
-
-Generalized LVQ is the LVQ algorithm as proven to converge by (REFEREFER) \todo{ref} 
-
-Relevance LVQ uses a vector $\lambda$ to keep track and improve on the feature relevances at each iteration. The relevances are then used as weights on the features to make more relevant features more prominent. $\lambda$ is determined during training as follows:
-
-Generalized metric LVQ uses a matrix consisting of the  
-
-Local generalized metric LVQ uses a matrix $\Omega$ per prototype.
-
-%rlvq
-%gmlvq
-%lgmlvq
-
-% normalization (naive,norm,norm_var)
-% 
+A slightly altered version of the LVQ toolbox by Biehl (ref) \todo{ref} was used for the implementation of the LVQ algorithms. GMLVQ was altered to be able to run GLVQ because the toolbox did not supply an algorithm for this. This was done by setting the learning rate for the matrix to zero and initialing the matrix to the identity matrix so all features have the same relevance.
 
 % section method (end
 

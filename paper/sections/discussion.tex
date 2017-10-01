@@ -1,7 +1,18 @@
 %!TEX root = ../hr-paper.tex
 \newpage
-\section{Discussion} % (fold)
+\section{Discussion and future work} % (fold)
 \label{sec:discussion}
+
+The results in the previous section show that the Knn algorithm performs best with $K=1$ out of all tested methods with all datasets. The type of feature extraction seems not to make a big impact on the classification of the characters. In the Knn case the datasets extracted with Sobel had a small edge over the Prewit extracted sets. In LVQ the reverse was observable.
+When we compare the labeled base set with the segmented set there is a clear difference visible. Looking at the intersection over union results the implemented segmentation does not seem to perform remarkably well. However the segmented dataset outperforms the given base set on every tested classification method.
+
+A remarkable result is that of the LVQ methods. These methods only seemed to work well when the datasets were prepossessed with there variance between one and zero. As to why this is the case is up for debate. It might be because the variance is to high in the dataset. This might mean the 2000 iterations used for the LVQ methods were not enough to have the prototypes converge.
+
+The same holds for the Knn method where a big drop in performance is visible as $K$ grows bigger than one. This means every point is classified by its closest neighbor. If more points are evaluated it is likely to be classified as another character. These performance issues for a larger $K$ might be problems with the feature extractor or the segmentation. As the same drop in performance is visible in the given base set the problem is probably with the feature extraction. Since a simple feature extraction method was chosen that only took the edges and the size of the image it can be improved on to find more complex features in the characters. With those improvements better classification should be achieved.
+
+The results for Knn seem to show that the data in the data set is not Gaussian distributed. The LVQ methods were run with one prototype per class located near the mean of its class. Further research might show if more prototypes per class yield better classification results and faster convergence.
+
+In the end the provided system as a whole gives classification results above $83\%$ with the simple Knn classifier, the Euclidean distance measure, and the Sobel filter. All other tested combinations were more complex and performed worse.
 
 
 % vier manieren ->
@@ -18,7 +29,13 @@
 % maybe something about the means of the classes and the variation between them
 % something about the feature extraction.
 
+% knn vs lvq
 
+% lvq var thing why?
+
+% better feature extraction
+
+% improvements on the segmentor
 
 
 % Do your results provide answers to your testable hypotheses? If so, how do you interpret your findings?

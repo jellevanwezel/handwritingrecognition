@@ -1,4 +1,5 @@
 %!TEX root = ../hr-paper.tex
+\newpage
 \section{Experiment} % (fold)
 \label{sec:experiment}
 
@@ -66,15 +67,25 @@ In order to be able to say anything about the performance of the segmentation re
 \subsection{Feature Extraction}
 
 The feature extraction for the experiment was done in two variants: one dataset was generated with the Sobel filters and the other was generated with the use of the Prewit filters. This means that feature 21 (length) and 22 (width) are the same for both datasets. This was done one the segmented dataset created by the segmentation system and on the received labeled dataset.
+
 \subsection{Classification}
 
 Classification was done by taking the distance measure's described in the method section \todo{ref} and running the KNN algorithm with them. For the Minkowski measure, values from $p=1$ to $p=6$ were used. This experiment was run on the dataset normalized and non-normalized.
 
-For the KNN algorithm $K=1$ to $K=20$ was used. Also multiple runs were done for $K=1$ to $K=100$ with the euclidean distance in order to see if a `large' $K$ has an unexpected influence on the classification results.
+For the KNN algorithm $K=1$ to $K=5$ was used. Also all runs were done for $K=1$ to $K=100$ with all distance measures in order to see if a `large' $K$ has an unexpected influence on the classification results.
 
 In order to gain the classification rates, the `leave one out' strategy was used. This strategy takes one data-point from the dataset and tries to classify it on the rest of the dataset. This is done for every point in the dataset. It is the extreme case of n-fold data splitting where the maximum number of splits is used.
 
+For the LVQ methods a parameter sweep was done to find the best performing dataset with the best performing preprocessing. The parameter sweep was done with 2000 iterations on the segmented dataset with Sobel feature extraction. The dataset were prepared with three methods of preprocessing:
 
+\begin{enumerate}
+  \item No preprocessing (NONE)
+  \item Feature columns normalized to values between one and zero (NORM)
+  \item Feature columns normalized so the variation is between one and zero (VAR)
+\end{enumerate}
+
+When the best performing method is found, the best LVQ method will be run on all datasets with the best performing preprocessing. The number of max iterations will be set to 8000.
+The LVQ methods were initialized with one prototype per class, These prototypes were initialized near the mean of their respectable classes. For LVQ 10-fold data splitting was used because `leave one out' was too time consuming.
 
 % knn
 %   -naive
